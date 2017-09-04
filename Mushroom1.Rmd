@@ -1,0 +1,95 @@
+---
+title: "Blooming Mushrooms"
+author: "jagruti"
+date: "9/3/2017"
+output:
+  html_document: default
+  pdf_document: default
+---
+
+As part of assignment 1,We will be studing the "Mushroom dataset" 
+available at 
+https://archive.ics.uci.edu/ml/datasets/Mushroom.
+
+A) Load the data
+==============================================================
+```{r,echo = TRUE}
+URL <- "https://archive.ics.uci.edu/ml/machine-learning-databases/mushroom/agaricus-lepiota.data"
+MushroomsData <- read.table(URL, header = FALSE,  sep = ",")
+```
+'Head' command provides the slight insight of data without crowding your workspace.
+
+```{r,echo = TRUE}
+head(MushroomsData)
+```
+```{r,echo = TRUE}
+str(MushroomsData)
+```
+
+B) Subsetting the data
+================================================================================
+```{r,echo = TRUE}
+MushroomsData <- data.frame(MushroomsData)
+subdata <- subset(MushroomsData,select = c(V1,V2,V3,V4))
+head(subdata)
+```
+
+C) Renaming columns 
+==============================================================================
+
+```{r,echo = TRUE}
+names(subdata) <- c("Edible/Poisonous","cap-shape","cap-surface","cap-color")
+head(subdata)
+```
+
+C.1) 'table' command comes handy whenever we are stuck with total count of each attribute in dataset.
+
+```{r,echo = TRUE}
+table(subdata$`Edible/Poisonous`)
+table(subdata$`cap-shape`)
+table(subdata$`cap-surface`)
+table(subdata$`cap-color`)
+```
+
+C.2)"gsub" can be used to rename the abbreviations but we wont be using it  with other columns as 'gsub' replaces every abbreviation and can create unncessary duplication of words.
+             
+```{r,echo = TRUE}
+subdata$`Edible/Poisonous` <- gsub("e","edible",subdata$`Edible/Poisonous`)
+subdata$`Edible/Poisonous` <- gsub("p","poisonous",subdata$`Edible/Poisonous`)
+```
+```{r,echo = TRUE}
+subdata1 <- data.frame(subdata)
+head(subdata1)
+```
+
+C.3) Given below is another way to replace abbreviations [neat and clean]
+```{r,echo = TRUE}
+subdata1$cap.shape = as.character(subdata1$cap.shape)
+subdata1$cap.surface = as.character(subdata1$cap.surface)
+subdata1$cap.color = as.character(subdata1$cap.color)
+subdata1$cap.shape[subdata1$cap.shape == "x"] = "convex";
+subdata1$cap.shape[subdata1$cap.shape == "b"] = "bell";
+subdata1$cap.shape[subdata1$cap.shape == "c"] = "conical";
+subdata1$cap.shape[subdata1$cap.shape == "f"] = "flat";
+subdata1$cap.shape[subdata1$cap.shape == "k"] = "knobbed";
+subdata1$cap.shape[subdata1$cap.shape == "s"] = "sunken";
+
+subdata1$cap.surface[subdata1$cap.surface == "f"] = "fibrous"
+subdata1$cap.surface[subdata1$cap.surface == "g"] = "grooves"
+subdata1$cap.surface[subdata1$cap.surface == "y"] = "scaly"
+subdata1$cap.surface[subdata1$cap.surface == "s"] = "smooth"
+
+subdata1$cap.color[subdata1$cap.color == "n"] = "brown"
+subdata1$cap.color[subdata1$cap.color == "b"] = "buff"
+subdata1$cap.color[subdata1$cap.color == "c"] = "cinnamon"
+subdata1$cap.color[subdata1$cap.color == "g"] = "gray"
+subdata1$cap.color[subdata1$cap.color == "r"] = "green"
+subdata1$cap.color[subdata1$cap.color == "p"] = "pink"
+subdata1$cap.color[subdata1$cap.color == "u"] = "purple"
+subdata1$cap.color[subdata1$cap.color == "e"] = "red"
+subdata1$cap.color[subdata1$cap.color == "w"] = "white"
+subdata1$cap.color[subdata1$cap.color == "y"] = "yellow"
+head(subdata1)
+```
+
+Final dataset required as per task given.
