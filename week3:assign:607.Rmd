@@ -1,0 +1,135 @@
+---
+title: "week3/607"
+author: "jagruti"
+date: "9/16/2017"
+output:
+  html_document: default
+  pdf_document: default
+---
+
+### 3. Copy the introductory example. The vector name stores the extracted names.
+
+```{r,echo = TRUE}
+name <- c("Moe Szyslak","Burns, C. Montgomery","Rev. Timothy Lovejoy","Ned Flanders","Simpson, Homer","Dr. Julius Hibbert")
+name
+```
+
+
+#### a) Use the tools of this chapter to rearrange the vector so that all elements conform to thestandard first_name last_name.
+```{r,echo = TRUE}
+library(stringr)
+firstname <- unlist(str_replace_all(name, pattern = "[[:alpha:]]+\\.",replacement = ""))
+first_name1 <- unlist(str_extract(firstname,"[[:alpha:]]{2,}\\w+"))
+first_name1
+last_name <- unlist(str_extract(firstname,"[[:alpha:]]{3,}$"))
+last_name
+dataFrame <- data.frame(first_name = first_name1,last_name = last_name)
+dataFrame
+
+```
+
+
+#### (b) Construct a logical vector indicating whether a character has a title (i.e., Rev. and Dr.)
+
+```{r,echo = TRUE}
+title <- unlist(str_extract(name,"^[[:alpha:]]+\\."))
+title
+title_vector <- unlist(str_detect(name,"^[[:alpha:]]+\\."))
+title_vector
+```
+
+
+#### (c) Construct a logical vector indicating whether a character has a second name.
+
+```{r,echo = TRUE}
+second_name <- unlist(str_extract(name,"\\ [[:alpha:]]+\\."))
+second_name
+second_name_vector <- unlist(str_detect(name,"\\ [[:alpha:]]+\\."))
+second_name_vector
+```
+
+
+### 4. Describe the types of strings that conform to the following regular expressions and construct an example that is matched by the regular expression.
+
+#### (a) [0-9]+\\$
+
+The string of numbers starting from zero  with '$' will get returned
+```{r,echo = TRUE}
+t <- "ab2654$895$zyw$123$"
+unlist(str_extract_all(t,"[0-9]+\\$"))
+```
+
+#### (b) \\b[a-z]{1,4}\\b
+ 
+The string of one to four characters with alphabets from "a" to "z"(lowercase) starting and ending with word edges.
+```{r,echo = TRUE}
+q <- "A spacious work place for intelligent brain"
+unlist(str_extract_all(q,"\\b[a-z]{1,4}\\b"))
+
+```
+
+#### (c) .*?\\.txt$
+
+Vector returns the string with ".txt" extention
+```{r,echo = TRUE}
+z <- "A_spacious_work_place_for_intelligent_brain.txt"
+unlist(str_extract_all(z,".*?\\.txt$"))
+```
+
+#### (d) \\d{2}/\\d{2}/\\d{4}
+
+The vector with pattern suitable to extract DATE or TIME format
+```{r,echo = TRUE}
+r  <- "12/23/2017"
+unlist(str_extract_all(r,"\\d{2}/\\d{2}/\\d{4}"))
+```
+
+#### (e)  <(.+?)>.+?</\\1>
+
+This query extracts the characters between two brakets and there will be subsequent occurance of these characters using "\\1" regardless of what comes in between (.+?)(backreferencing).
+```{r,echo = TRUE}
+d <- c("<!hello><html>world</html>")
+unlist(str_extract_all(d,"<(.+?)>.+?</\\1>"))
+```
+
+
+
+### 9. The following code hides a secret message. Crack it with R and regular expressions. Hint: Some of the characters are more revealing than others! 
+
+
+```{r,echo = TRUE}
+code <-"clcopCow1zmstc0d87wnkig7OvdicpNuggvhryn92Gjuwczi8hqrfpRxs5Aj5dwpn0TanwoUwisdij7Lj8kpf03AT5Idr3coc0bt7yczjatOaootj55t3Nj3ne6c4Sfek.r1w1YwwojigOd6vrfUrbz2.2bkAnbhzgv4R9i05zEcrop.wAgnb.SqoU65fPa1otfb7wEm24k6t3sR9zqe5fy89n6Nd5t9kc4fE905gmc4Rgxo5nhDk!gr"
+decode <- unlist(str_extract_all(code,"[[:upper:]]+"))
+decode
+```
+     
+Using the hint mentioned,we checked with the upper case letters ,to find the sensible message out of the code.Analyzing every character ,The uppercase letters do make sense.But we need to get them combined.
+
+```{r,echo = TRUE}
+decode <- unlist(str_extract_all(code,"[[:upper:].]{1,}" ))
+decode <- str_replace_all(paste(decode,collapse = ""),"[.]"," ")
+decode
+ 
+```
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
