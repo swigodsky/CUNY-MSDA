@@ -1,0 +1,80 @@
+---
+title: "Tidy data/week5/607"
+author: "jagruti"
+date: "9/30/2017"
+output:
+  html_document: default
+  pdf_document: default
+---
+
+## Reading data
+```{r,echo = TRUE}
+library(tidyr)
+library(dplyr)
+library(ggplot2)
+TTData <- read.csv("TTData.csv")
+TTData
+```
+
+## Re arrangment for column names.
+```{r,echo=TRUE}
+colnames(TTData) <- c("Airlines","time_check","Los_Angeles","Phoenix","San_Diego","San_Franscisco","Seattle")
+TTData
+```
+
+## Analysis for "Tidy" Set
+```{r,echo = TRUE}
+tidyset <- gather(TTData,Destination,arrival_delay,Los_Angeles:Seattle)
+tidyset <- data.frame(tidyset)
+tidyset
+```
+
+## Analysis to compare arrival delays of two airlines 
+### We will use "spread" and "mutate" from package tidyverse.
+
+```{r,echo = TRUE}
+tidyset1 <- spread(tidyset,time_check,arrival_delay)
+tidyset1
+```
+
+#### Check for total flight delays
+```{r,echo = TRUE}
+total_delays <- tidyset1 %>% gather(time_check,Number_flights,delayed,`on time`)
+total_delays
+```
+
+```{r,echo = TRUE}
+ggplot(total_delays,aes(x= Airlines,y = Number_flights,fill = time_check)) +
+geom_bar(stat = "identity") + facet_grid(~Destination)+xlab("Cities") +
+ylab("Flights")+ labs(fill = "time_check")
+```
+
+#### The graph shows that AM WEST has maximum flights with Phoenix city and delays are comparitively low  to San_franscisco where the flights are delayed more .
+
+
+
+### Finding the "Delay ratio" will be next step.
+
+```{r,echo = TRUE}
+tidyset2 <- mutate(tidyset1,DRatio = (tidyset1$delayed/(tidyset1$`on time` + tidyset1$delayed)))
+tidyset2$Airlines <- as.character(tidyset2$Airlines)
+tidyset2
+```
+
+```{r,echo = TRUE}
+ggplot(tidyset2,aes(x = reorder(Destination,DRatio) , y = DRatio,color = Airlines,group = Airlines))+ geom_line(linetype = "dotted") + geom_point(shape = 20,size = 4) + ggtitle("Delay Comparision") + labs(x = "Destinations", y = "Delay Ratio")
+```
+
+#### The delay ratio comparision for both air lines show that delays are higher for 'AM WEST' than for 'ALASKA airline'. THe delays are experienced more in cities 'San_franscisco' and 'Seattle'
+
+## Distribution analysis
+```{r,echo = TRUE}
+analysis <- summarise(group_by(tidyset2,Airlines),mean(DRatio),sd(DRatio),median(DRatio),aggregate_delay = sum(delayed)/sum(delayed + `on time`))
+analysis
+```
+
+#### Distribution Analysis shows that ALASKA airline has lower mean (delay ratio) while AM WEST has lower proportion of delayed arrivals overall.
+
+
+
+
