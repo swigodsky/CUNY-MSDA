@@ -1,0 +1,260 @@
+---
+title: "Project2"
+author: "Jagruti"
+date: "10/7/2017"
+output:
+  html_document: default
+---
+#### The dataset from the post of Emilie Bolduc 
+#### Link to dataset :https://data.world/dotslashmaggie/google-trends-yoga/workspace/file?filename=20160502_YogaByStateMonth.csv
+
+### Untidy data is sorted to answer following questions:
+####1) Where in the US has there been the most interest in yoga?
+####2) When people were most interested in yoga in the last 10 years?
+####3) Interactive map showing the popularity of Yoga by state.
+
+```{r,echo = TRUE}
+library(stringr)
+library(tidyr)
+library(dplyr)
+library(ggplot2)
+library(ggmap)
+library(leaflet)
+data <- read.csv("yoga.csv")
+data <- data[-1,]
+head(data)
+#str(data)
+```
+
+```{r,echo = TRUE}
+colnames(data) <- c("Year","Alabama","Alaska","Arizona","Arkansas","California","Colorado","Connecticut","Delaware","DC","Florida","Georgia","Hawaii","Idaho","Illinois","Indiana","Iowa","Kansus","Kentucky","Louisiana","Maine","Maryland","Masachusetts","Michigan","Minnesota","Mississippi","Missouri","Montana","Nebraska","Nevada","NH","New_Jersey","New_Mexico","New_York","North_Carolina","North_Dakota","Ohio","Oklahoma","Oregon","Pennsylvania","Rhode_Island","South_Carolina","South_Dakota","Tennessse","Texas","Utah","Vermont","Virginia","Washington","West_Virginia","Wisconsin","Wyoming")
+data1  <-data %>% 
+            separate(Year,into = c("Year","month"),sep = "-")
+data1 <- data1[,-2]
+```
+
+```{r,echo = TRUE}
+data2 <- data1 %>%
+      group_by(Year)%>%
+         summarise_all(funs(sum))
+data2 <- data.frame(data2)
+```
+
+```{r,echo = TRUE}
+data3 <- setNames(data.frame(t(data2[,-1])),data2[,1])
+for(i in 1:51) {
+  data3$total[i] <- rowSums(data3[i,1:13],na.rm = TRUE)
+}
+head(data3)
+max(data3$total)
+```
+
+### Vermont(7529) had highest practice of yoga in last 10 years.
+
+```{r,echo = TRUE}
+data3[52,] = c(colSums(data3[,1:14]))
+max(data3[52,-14])
+```
+
+### Year 2015 recorded highest number of yoga practisioners.
+
+```{r,echo = TRUE}
+data3$Regions <- c("Alabama","Alaska","Arizona","Arkansas","California","Colorado","Connecticut","Delaware","DC","Florida","Georgia","Hawaii","Idaho","Illinois","Indiana","Iowa","Kansus","Kentucky","Louisiana","Maine","Maryland","Masachusetts","Michigan","Minnesota","Mississippi","Missouri","Montana","Nebraska","Nevada","NH","New_Jersey","New_Mexico","New_York","North_Carolina","North_Dakota","Ohio","Oklahoma","Oregon","Pennsylvania","Rhode_Island","South_Carolina","South_Dakota","Tennessse","Texas","Utah","Vermont","Virginia","Washington","West_Virginia","Wisconsin","Wyoming","Total1")
+data3$total <- as.numeric(data3$total)
+data3$Regions <- as.character(data3$Regions)
+```
+
+### Getting latitudes and longitudes of all states in data frame.
+```{r,echo = TRUE}
+for (i in 1:nrow(data3)) {
+latlon = geocode(data3[i,15])
+data3$lon[i] = as.numeric(latlon[1])
+data3$lat[i] = as.numeric(latlon[2])
+}
+```
+
+### Popularity of Yoga by states
+```{r,echo = TRUE}
+data4 <- data.frame(data3$total, data3$lon, data3$lat,data3$Regions)
+colnames(data4) = c('total','lon','lat','Region')
+```
+
+
+
+```{r,echo = TRUE}
+m <- leaflet() %>%
+  addTiles() %>%
+  addMarkers(lng = data4$lon,lat = data4$lat,popup = paste("Total",data4$total) %>% 
+                                                     paste("Region",data4$Region))
+m
+```
+#### Clicking on pins will give the total number of yoga followers in the state.
+
+
+
+---
+title: "CatFish"
+author: "Jagruti"
+date: "10/9/2017"
+output: pdf_document
+---
+
+
+
+
+
+
+### II) My second dataset is from Chad Smith based on 'catfish' survey.I calculated the yearwise and size category wise numbers.Starting with crunching data and tidying it. 
+####Link to dataset: CatfishFarm.xlsx 
+
+```{r,echo = TRUE}
+CFData <- read.csv("CatfishFarm.csv")
+colnames(CFData) = as.character(unlist(CFData[1,]))
+CFData = CFData[-1,]
+CFData = CFData[-7:-8,]
+CFData
+```
+
+#### collecting data from 'wide' to 'tall' format
+
+```{r,echo = TRUE}
+TCFData <- CFData %>%
+                gather(Year,Budget,c(2:26))
+TCFData$Budget <- as.numeric(gsub(",","",TCFData$Budget))
+TCFData$Year <- as.numeric(TCFData$Year)
+head(TCFData)
+```
+
+```{r,echo = TRUE}
+ggplot(TCFData,aes(x = reorder(Year,Budget) , y = Budget,color = `Size category`,group = `Size category`))+ geom_line(linetype = "dotted") + geom_point(shape = 20,size = 4) + labs(x = "Year", y = "Budget")+ coord_flip()
+```
+
+#### The graph makes it clear that there is much variation in amount of size -"Fingerling/fry" over the years.Th prices for Broodfish and and Large foodsize fishes are constant.
+
+
+#### To analyze data yearwise,we choose to use "Spread" function.
+
+```{r,echo = TRUE}
+TSCFdata <- spread(TCFData,`Size category`,`Budget`)
+TSCFdata <- data.frame(TSCFdata)
+head(TSCFdata)
+```
+
+```{r,echo =  TRUE}
+TSCFdata <- na.omit(TSCFdata)
+TSCFdata$Broodfish.1. <- as.numeric(gsub(",","",TSCFdata$Broodfish.1.)) 
+TSCFdata$Fingerling.fry.2. <- as.numeric(gsub(",","",TSCFdata$Fingerling.fry.2.))
+TSCFdata$Large.foodsize.6. <- as.numeric(gsub(",","",TSCFdata$Large.foodsize.6.))
+TSCFdata$Medium.foodsize.5. <- as.numeric(gsub(",","",TSCFdata$Medium.foodsize.5.))
+TSCFdata$Small.foodsize.4. <- as.numeric(gsub(",","",TSCFdata$Small.foodsize.4.))
+TSCFdata$Stockers.3. <- as.numeric(gsub(",","",TSCFdata$Stockers.3.)) 
+TSCFData1 <- mutate(TSCFdata,Total = rowSums(TSCFdata[,2:7]))
+```
+
+```{r,echo = TRUE}
+ggplot(TSCFData1,aes(x = reorder(Year,Total) , y = Total))+ geom_line(linetype = "dotted") + geom_point(shape = 20,size = 4) + ggtitle("Year wise comparison") + labs(x = "Year", y = "Total Inventory Amount",srt = 45)+ coord_flip()
+```
+
+#### Obeservation shows that year 2016 resulted into much less inventory amount for total catfish purchase. 
+
+
+
+---
+title: "FRB_CP"
+author: "Jagruti"
+date: "10/7/2017"
+output: html_document
+---
+
+### III) Dataset is from Albina Gallyavova's post on FED CP rates
+
+#### Attached file has Federal Reserve Board commercial paper rates with essentially several header rows (extract with few . Perhaps, columns should be split and organized by types  (financial/non-financial/asset-backed/etc.) and tenor (overnight/7-day/15-day etc.), depending on intention of analysis. Could be useful to look at the patterns in different buckets, perform basic statistical analysis, and estimate future rates.
+
+
+#### Loading and getting data in order
+```{r,echo = TRUE}
+library(stringr)
+library(tidyr)
+library(dplyr)
+library(ggplot2)
+library(reshape2)
+dataset <- read.csv("FRB_CP.csv",stringsAsFactors = FALSE)
+dataset[dataset == 'ND'] <- 0
+dataset <- na.omit(dataset)
+dataset <- dataset[-1:-4,]
+```
+
+
+#### Renaming data columns.
+```{r,echo = TRUE}
+names(dataset) <- c("Date","0D-AA-NFC","7D-AA-NFC","15D-AA-NFC","30D-AA-NFC","60D-AA-NFC","90D-AA-NFC","0D-A2-P2-NFC","7D-A2-P2-NFC","15D-A2-P2-NFC","30D-A2-P2-NFC","60D-A2-P2-NFC","90D-A2-P2-NFC","0D-AA-FC","7D-AA-FC","15D-AA-FC","30D-AA-FC","60D-AA-FC","90D-AA-FC","0D-AA-ABC","7D-AA-ABC","15D-AA-ABC","30D-AA-ABC","60D-AA-ABC","90D-AA-ABC")
+
+```
+
+#### Seperating 'data' to analyze on basis of year.
+```{r,echo = TRUE}
+dataset1  <- dataset %>% 
+            separate(Date,into = c("month","day","Year"),sep = "/")
+dataset1 <- dataset1[,-1:-2]
+dataset1$Year <- as.numeric(dataset1$Year)
+head(dataset1)
+```
+
+#### Goruping with respect to year
+```{r,echo = TRUE}
+dataset1 <- data.frame(sapply(dataset1, function(x) as.numeric(as.character(x))))
+dataset2 <- dataset1 %>%
+      group_by(Year)%>%
+         summarise_all(funs(sum))
+head(dataset2)
+```
+
+### Graph  depicting yearwise change in rates of paper.
+```{r,echo = TRUE}
+dataset3 <- melt(dataset2,id.vars = "Year",measure.vars = grep("^X",names(dataset2),value = TRUE))
+ggplot(dataset3,aes(x = variable,y = value,color = as.factor(Year)))+ geom_point() +
+      geom_line(aes(group = Year)) +
+      coord_cartesian(ylim = c(1, 100)) + coord_flip()
+```
+
+```{r,echo = TRUE}
+for(i in 1:2) {
+  dataset2$total[i] <- rowSums(dataset2[i,2:25],na.rm = TRUE)
+}
+```
+
+### Percentage increase from 2016 to 2017
+```{r,echo = TRUE}
+percent_increase <- (671.13-208.02)/(208.02)
+percent_increase*100
+```
+
+
+```{r,echo = TRUE}
+dataset2[3,] = c("Total", colSums(dataset2[,2:26]))
+head(dataset2)
+```
+
+#### I added all rows and columns to calculate Financial,Non-financial and asset blocked rates  seperately.depending upon what rates you want one can just add up the columns and take the sum.I primarily focused on how to rates changed within two years which is represented in graph above.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
