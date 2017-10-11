@@ -1,0 +1,54 @@
+### II) My second dataset is from Chad Smith based on 'catfish' survey.I calculated the yearwise and size category wise numbers.Starting with crunching data and tidying it. 
+####Link to dataset: CatfishFarm.xlsx 
+
+```{r,echo = TRUE}
+CFData <- read.csv("CatfishFarm.csv")
+colnames(CFData) = as.character(unlist(CFData[1,]))
+CFData = CFData[-1,]
+CFData = CFData[-7:-8,]
+CFData
+```
+
+#### collecting data from 'wide' to 'tall' format
+
+```{r,echo = TRUE}
+TCFData <- CFData %>%
+                gather(Year,Budget,c(2:26))
+TCFData$Budget <- as.numeric(gsub(",","",TCFData$Budget))
+TCFData$Year <- as.numeric(TCFData$Year)
+head(TCFData)
+```
+
+```{r,echo = TRUE}
+ggplot(TCFData,aes(x = reorder(Year,Budget) , y = Budget,color = `Size category`,group = `Size category`))+ geom_line(linetype = "dotted") + geom_point(shape = 20,size = 4) + labs(x = "Year", y = "Budget")+ coord_flip()
+```
+
+#### The graph makes it clear that there is much variation in amount of size -"Fingerling/fry" over the years.Th prices for Broodfish and and Large foodsize fishes are constant.
+
+
+#### To analyze data yearwise,we choose to use "Spread" function.
+
+```{r,echo = TRUE}
+TSCFdata <- spread(TCFData,`Size category`,`Budget`)
+TSCFdata <- data.frame(TSCFdata)
+head(TSCFdata)
+```
+
+```{r,echo =  TRUE}
+TSCFdata <- na.omit(TSCFdata)
+TSCFdata$Broodfish.1. <- as.numeric(gsub(",","",TSCFdata$Broodfish.1.)) 
+TSCFdata$Fingerling.fry.2. <- as.numeric(gsub(",","",TSCFdata$Fingerling.fry.2.))
+TSCFdata$Large.foodsize.6. <- as.numeric(gsub(",","",TSCFdata$Large.foodsize.6.))
+TSCFdata$Medium.foodsize.5. <- as.numeric(gsub(",","",TSCFdata$Medium.foodsize.5.))
+TSCFdata$Small.foodsize.4. <- as.numeric(gsub(",","",TSCFdata$Small.foodsize.4.))
+TSCFdata$Stockers.3. <- as.numeric(gsub(",","",TSCFdata$Stockers.3.)) 
+TSCFData1 <- mutate(TSCFdata,Total = rowSums(TSCFdata[,2:7]))
+```
+
+```{r,echo = TRUE}
+ggplot(TSCFData1,aes(x = reorder(Year,Total) , y = Total))+ geom_line(linetype = "dotted") + geom_point(shape = 20,size = 4) + ggtitle("Year wise comparison") + labs(x = "Year", y = "Total Inventory Amount",srt = 45)+ coord_flip()
+```
+
+#### Obeservation shows that year 2016 resulted into much less inventory amount for total catfish purchase. 
+
+

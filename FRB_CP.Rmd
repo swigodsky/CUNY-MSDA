@@ -1,0 +1,79 @@
+---
+title: "FRB_CP"
+author: "Jagruti"
+date: "10/7/2017"
+output: html_document
+---
+
+### III) Dataset is from Albina Gallyavova's post on FED CP rates
+
+#### Attached file has Federal Reserve Board commercial paper rates with essentially several header rows (extract with few . Perhaps, columns should be split and organized by types  (financial/non-financial/asset-backed/etc.) and tenor (overnight/7-day/15-day etc.), depending on intention of analysis. Could be useful to look at the patterns in different buckets, perform basic statistical analysis, and estimate future rates.
+
+
+#### Loading and getting data in order
+```{r,echo = TRUE}
+library(stringr)
+library(tidyr)
+library(dplyr)
+library(ggplot2)
+library(reshape2)
+dataset <- read.csv("FRB_CP.csv",stringsAsFactors = FALSE)
+dataset[dataset == 'ND'] <- 0
+dataset <- na.omit(dataset)
+dataset <- dataset[-1:-4,]
+```
+
+
+#### Renaming data columns.
+```{r,echo = TRUE}
+names(dataset) <- c("Date","0D-AA-NFC","7D-AA-NFC","15D-AA-NFC","30D-AA-NFC","60D-AA-NFC","90D-AA-NFC","0D-A2-P2-NFC","7D-A2-P2-NFC","15D-A2-P2-NFC","30D-A2-P2-NFC","60D-A2-P2-NFC","90D-A2-P2-NFC","0D-AA-FC","7D-AA-FC","15D-AA-FC","30D-AA-FC","60D-AA-FC","90D-AA-FC","0D-AA-ABC","7D-AA-ABC","15D-AA-ABC","30D-AA-ABC","60D-AA-ABC","90D-AA-ABC")
+
+```
+
+#### Seperating 'data' to analyze on basis of year.
+```{r,echo = TRUE}
+dataset1  <- dataset %>% 
+            separate(Date,into = c("month","day","Year"),sep = "/")
+dataset1 <- dataset1[,-1:-2]
+dataset1$Year <- as.numeric(dataset1$Year)
+head(dataset1)
+```
+
+#### Goruping with respect to year
+```{r,echo = TRUE}
+dataset1 <- data.frame(sapply(dataset1, function(x) as.numeric(as.character(x))))
+dataset2 <- dataset1 %>%
+      group_by(Year)%>%
+         summarise_all(funs(sum))
+head(dataset2)
+```
+
+### Graph  depicting yearwise change in rates of paper.
+```{r,echo = TRUE}
+dataset3 <- melt(dataset2,id.vars = "Year",measure.vars = grep("^X",names(dataset2),value = TRUE))
+ggplot(dataset3,aes(x = variable,y = value,color = as.factor(Year)))+ geom_point() +
+      geom_line(aes(group = Year)) +
+      coord_cartesian(ylim = c(1, 100)) + coord_flip()
+```
+
+```{r,echo = TRUE}
+for(i in 1:2) {
+  dataset2$total[i] <- rowSums(dataset2[i,2:25],na.rm = TRUE)
+}
+```
+
+### Percentage increase from 2016 to 2017
+```{r,echo = TRUE}
+percent_increase <- (671.13-208.02)/(208.02)
+percent_increase*100
+```
+
+
+```{r,echo = TRUE}
+dataset2[3,] = c("Total", colSums(dataset2[,2:26]))
+head(dataset2)
+```
+
+#### I added all rows and columns to calculate Financial,Non-financial and asset blocked rates  seperately.depending upon what rates you want one can just add up the columns and take the sum.I primarily focused on how to rates changed within two years which is represented in graph above.
+
+

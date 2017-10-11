@@ -1,0 +1,127 @@
+---
+title: "Yoga"
+author: "Jagruti"
+date: "10/7/2017"
+output:
+  html_document: default
+---
+#### The dataset from the post of Emilie Bolduc 
+#### Link to dataset :https://data.world/dotslashmaggie/google-trends-yoga/workspace/file?filename=20160502_YogaByStateMonth.csv
+
+### Untidy data is sorted to answer following questions:
+####1) Where in the US has there been the most interest in yoga?
+####2) When people were most interested in yoga in the last 10 years?
+####3) Interactive map showing the popularity of Yoga by state.
+
+```{r,echo = TRUE}
+library(stringr)
+library(tidyr)
+library(dplyr)
+library(ggplot2)
+library(ggmap)
+library(leaflet)
+data <- read.csv("yoga.csv")
+data <- data[-1,]
+head(data)
+#str(data)
+```
+
+```{r,echo = TRUE}
+colnames(data) <- c("Year","Alabama","Alaska","Arizona","Arkansas","California","Colorado","Connecticut","Delaware","DC","Florida","Georgia","Hawaii","Idaho","Illinois","Indiana","Iowa","Kansus","Kentucky","Louisiana","Maine","Maryland","Masachusetts","Michigan","Minnesota","Mississippi","Missouri","Montana","Nebraska","Nevada","NH","New_Jersey","New_Mexico","New_York","North_Carolina","North_Dakota","Ohio","Oklahoma","Oregon","Pennsylvania","Rhode_Island","South_Carolina","South_Dakota","Tennessse","Texas","Utah","Vermont","Virginia","Washington","West_Virginia","Wisconsin","Wyoming")
+data1  <-data %>% 
+            separate(Year,into = c("Year","month"),sep = "-")
+data1 <- data1[,-2]
+```
+
+```{r,echo = TRUE}
+data2 <- data1 %>%
+      group_by(Year)%>%
+         summarise_all(funs(sum))
+data2 <- data.frame(data2)
+```
+
+```{r,echo = TRUE}
+data3 <- setNames(data.frame(t(data2[,-1])),data2[,1])
+for(i in 1:51) {
+  data3$total[i] <- rowSums(data3[i,1:13],na.rm = TRUE)
+}
+head(data3)
+max(data3$total)
+```
+
+### Vermont(7529) had highest practice of yoga in last 10 years.
+
+```{r,echo = TRUE}
+data3[52,] = c(colSums(data3[,1:14]))
+max(data3[52,-14])
+```
+
+### Year 2015 recorded highest number of yoga practisioners.
+
+```{r,echo = TRUE}
+data3$Regions <- c("Alabama","Alaska","Arizona","Arkansas","California","Colorado","Connecticut","Delaware","DC","Florida","Georgia","Hawaii","Idaho","Illinois","Indiana","Iowa","Kansus","Kentucky","Louisiana","Maine","Maryland","Masachusetts","Michigan","Minnesota","Mississippi","Missouri","Montana","Nebraska","Nevada","NH","New_Jersey","New_Mexico","New_York","North_Carolina","North_Dakota","Ohio","Oklahoma","Oregon","Pennsylvania","Rhode_Island","South_Carolina","South_Dakota","Tennessse","Texas","Utah","Vermont","Virginia","Washington","West_Virginia","Wisconsin","Wyoming","Total1")
+data3$total <- as.numeric(data3$total)
+data3$Regions <- as.character(data3$Regions)
+```
+
+### Getting latitudes and longitudes of all states in data frame.
+```{r,echo = TRUE}
+for (i in 1:nrow(data3)) {
+latlon = geocode(data3[i,15])
+data3$lon[i] = as.numeric(latlon[1])
+data3$lat[i] = as.numeric(latlon[2])
+}
+```
+
+### Popularity of Yoga by states
+```{r,echo = TRUE}
+data4 <- data.frame(data3$total, data3$lon, data3$lat,data3$Regions)
+colnames(data4) = c('total','lon','lat','Region')
+```
+
+
+
+```{r,echo = TRUE}
+m <- leaflet() %>%
+  addTiles() %>%
+  addMarkers(lng = data4$lon,lat = data4$lat,popup = paste("Total",data4$total) %>% 
+                                                     paste("Region",data4$Region))
+m
+```
+#### Clicking on pins will give the total number of yoga followers in the state.
+
+
+
+---
+title: "CatFish"
+author: "Jagruti"
+date: "10/9/2017"
+output: pdf_document
+---
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
