@@ -1,0 +1,28 @@
+{
+"library":{
+   "book_1":{
+      "name":"Good Omens The Nice and Accurate Prophecies of Agnes Nutter",
+      "author": "Terry Pratchett+1 ",
+      "rating":"4.26" ,
+      "trating": "504263",
+      "year": "1990" ,
+      "reco" :"shelved 7 times as multiple authors"
+      },
+    "book_2": {
+      "name":"Will Grayson",
+      "author": "John Green", 
+      "rating":"3.84", 
+      "trating":"463967",
+      "year":"2010",
+      "reco":"shelved 6 times as multiple authors"
+      },
+   "book_3":{
+      "name": "Illuminae The Illuminae Files",
+      "author": "Amie Kaufman+1",
+      "rating":"4.31" ,
+      "trating":"156733",
+      "year": "2015 ",
+      "reco":"shelved 5 times as multiple authors"
+      }
+   }
+}
