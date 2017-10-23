@@ -1,0 +1,362 @@
+---
+title: "Aviation Industry"
+author: "Jagruti"
+date: "10/18/2017"
+output:
+  html_document: default
+  pdf_document: default
+---
+###For Project 3,I choose 'Aviation' industry to scrap data and make predictions.I scraped data with two airlines
+
+### 1) American Airlines
+### 2) British Airways
+### The two airlines had around 20-25 openings for 'data analyst' position around the states.The openings listed skills required for position and were used to make predictions for my task.
+
+Loading Packages
+
+```{r,echo = TRUE,message=FALSE,warning= FALSE}
+library(rvest)
+library(XML)
+library(RCurl)
+library(splitstackshape)
+library(tm)
+library(xml2)
+library(stringr)
+library(qdapRegex)
+library(plyr)
+library(ggplot2)
+```
+
+### Loading and cleaning data
+
+```{r,echo = TRUE,message = FALSE,warning = FALSE}
+base_url1 <- "https://jobs.aa.com"
+html_data <- readLines("https://jobs.aa.com/search/?q=analyst")
+html_data <- grep (".jobTitle-link",html_data,value = TRUE)
+html_data <- gsub('.*(href=")',"",html_data)
+html_data <- gsub('\">*',"",html_data)
+html_data <- gsub('*</a>',"",html_data)
+html_data <- gsub('\\s*\\w*$',"",html_data)
+html_data <- unlist(strsplit(html_data,split = '/',fixed = TRUE))
+```
+
+
+```{r,echo = TRUE}
+html_data1 <-paste(html_data[1],html_data[2],html_data[3],html_data[4],sep = '/')
+html_data1 <- paste(base_url1,html_data1,'/',sep = '')
+html_data2 <- paste(html_data[6],html_data[7],html_data[8],html_data[9],sep = '/')
+html_data2 <- paste(base_url1,html_data2,'/',sep = '')
+html_data3 <-paste(html_data[11],html_data[12],html_data[13],html_data[14],sep = '/')
+html_data3 <- paste(base_url1,html_data3,'/',sep = '')
+html_data4 <-paste(html_data[16],html_data[17],html_data[18],html_data[19],sep = '/')
+html_data4<- paste(base_url1,html_data4,'/',sep = '')
+html_data5 <-paste(html_data[21],html_data[22],html_data[23],html_data[24],sep = '/')
+html_data5<- paste(base_url1,html_data5,'/',sep = '')
+html_data6 <-paste(html_data[26],html_data[27],html_data[28],html_data[29],sep = '/')
+html_data6<- paste(base_url1,html_data6,'/',sep = '')
+html_data7 <-paste(html_data[31],html_data[32],html_data[33],html_data[34],sep = '/')
+html_data7<- paste(base_url1,html_data7,'/',sep = '')
+html_data8 <-paste(html_data[36],html_data[37],html_data[38],html_data[39],sep = '/')
+html_data8<- paste(base_url1,html_data8,'/',sep = '')
+html_data9 <-paste(html_data[41],html_data[42],html_data[43],html_data[44],sep = '/')
+html_data9<- paste(base_url1,html_data9,'/',sep = '')
+html_data10 <-paste(html_data[47],html_data[48],html_data[49],html_data[50],sep = '/')
+html_data10<- paste(base_url1,html_data10,'/',sep = '')
+html_data11 <-paste(html_data[52],html_data[53],html_data[54],html_data[55],sep = '/')
+html_data11<- paste(base_url1,html_data11,'/',sep = '')
+html_data12 <-paste(html_data[57],html_data[58],html_data[59],html_data[60],sep = '/')
+html_data12<- paste(base_url1,html_data12,'/',sep = '')
+html_data13 <-paste(html_data[62],html_data[63],html_data[64],html_data[65],sep = '/')
+html_data13<- paste(base_url1,html_data13,'/',sep = '')
+html_data14 <-paste(html_data[67],html_data[68],html_data[69],html_data[70],sep = '/')
+html_data14<- paste(base_url1,html_data14,'/',sep = '')
+html_data15<-paste(html_data[72],html_data[73],html_data[74],html_data[75],sep = '/')
+html_data15<- paste(base_url1,html_data15,'/',sep = '')
+html_data16 <-paste(html_data[77],html_data[78],html_data[79],html_data[80],sep = '/')
+html_data16<- paste(base_url1,html_data16,'/',sep = '')
+html_data17 <-paste(html_data[83],html_data[84],html_data[85],html_data[86],sep = '/')
+html_data17<- paste(base_url1,html_data17,'/',sep = '')
+html_data18 <-paste(html_data[88],html_data[89],html_data[90],html_data[91],sep = '/')
+html_data18<- paste(base_url1,html_data18,'/',sep = '')
+html_data19 <-paste(html_data[94],html_data[95],html_data[96],html_data[97],sep = '/')
+html_data19<- paste(base_url1,html_data19,'/',sep = '')
+html_data20 <-paste(html_data[99],html_data[100],html_data[101],html_data[102],sep = '/')
+html_data20<- paste(base_url1,html_data20,'/',sep = '')
+html_data21 <-paste(html_data[104],html_data[105],html_data[106],html_data[107],sep = '/')
+html_data21<- paste(base_url1,html_data21,'/',sep = '')
+html_data22 <-paste(html_data[109],html_data[110],html_data[111],html_data[112],sep = '/')
+html_data22<- paste(base_url1,html_data22,'/',sep = '')
+html_data23 <-paste(html_data[114],html_data[115],html_data[116],html_data[117],sep = '/')
+html_data23<- paste(base_url1,html_data23,'/',sep = '')
+html_data24<-paste(html_data[119],html_data[120],html_data[121],html_data[122],sep = '/')
+html_data24<- paste(base_url1,html_data24,'/',sep = '')
+html_data25<-paste(html_data[124],html_data[125],html_data[126],html_data[127],sep = '/')
+html_data25<- paste(base_url1,html_data25,'/',sep = '')
+
+html_megaset <- rbind(html_data1,html_data2,html_data3,html_data4,html_data5,html_data6,html_data7,html_data8,html_data9,html_data10,html_data11,html_data12,html_data13,html_data14,html_data15,html_data16,html_data17,html_data18,html_data19,html_data20,html_data21,html_data22,html_data23,html_data24,html_data25)
+html_megaset
+```
+
+### With all links listed above,to read data from those individual web pages,"xml" package is great help.I used 'for' loop for going through every webpage and reading data with keywords "skill","experience", "language","Job Qualifications".
+
+```{r,echo = TRUE,message= FALSE,warning = FALSE}
+t1<-as.character()
+for(i in 1:length(html_megaset))
+{
+  webpage<-getURL(html_megaset[i])
+  webpage <- readLines(tc <- textConnection(webpage)); close(tc)
+  pagetree <- htmlTreeParse(webpage, error=function(...){}, useInternalNodes = TRUE)
+  skillwords1 <-unlist(xpathSApply(pagetree,"/html/body/div/descendant::*[contains (text(),'skills')]",xmlValue))
+  skillwords2 <-unlist(xpathSApply(pagetree,"/html/body/div/descendant::*[contains (text(),'experience')]",xmlValue))
+  skillwords3 <-unlist(xpathSApply(pagetree,"/html/body/div/descendant::*[contains (text(),'language')]",xmlValue))
+  skillwords4 <-unlist(xpathSApply(pagetree,"/html/body/div/descendant::*[contains (text(),'Job Quatlifications')]",xmlValue))
+ if (length(paste(skillwords1,skillwords2,skillwords3,skillwords4))>0 )
+  { t1[i]<-paste(skillwords1,skillwords2,skillwords3,skillwords4)  }
+ else 
+t1[i]<-"0"
+}
+
+write.table(t1,file = "data1.csv")
+file1<-read.csv("data1.csv",header = FALSE,stringsAsFactors = FALSE)
+```
+
+### 'file1' had 7 columns with raw data, which is required to transform into single data frame.
+### "Corpus" comes under package 'tm' for reading and collecting text document.
+
+```{r,echo = TRUE}
+file1$V1<-paste(file1$V1,file1$V2,file1$V3,file1$V4,file1$V4,file1$V5,file1$V6,file1$V7,sep = "")
+review_text1 <- paste(file1$V1, collapse=" ")
+review_source1 <- VectorSource(review_text1)
+c1 <- Corpus(review_source1)
+c1 <- tm_map(c1, content_transformer(tolower))
+c1 <- tm_map(c1, removePunctuation)
+c1 <- tm_map(c1, stripWhitespace)
+c1 <- tm_map(c1, removeWords, stopwords("english"))
+dtm1 <- DocumentTermMatrix(c1)
+dtm21 <- as.matrix(dtm1)
+frequency1 <- colSums(dtm21)
+frequency1 <- sort(frequency1, decreasing=TRUE)
+head(frequency1,200)
+```
+
+### Forming skill sets based on 'technical' and 'non techical' category.
+
+```{r,echo = TRUE}
+skill_data1<-as.data.frame(frequency1)
+skill_data1$skill1<-rownames(skill_data1)
+
+non_tech_skill1<-skill_data1[skill_data1$skill1 %in% c("Self","interpersonal","innovation","creative","curiosity","leadership","team","management","strategy","communication","planning","driven","willing","commitment","attention","proficiency","knowledge","teamwork","focus","selfmotivated"),]
+
+
+tech_skills1 <- skill_data1[skill_data1$skill1 %in% c("technology","python","microsoft","powerpoint","tableau","simulation","javascrpts","sql","agile","objectoriented","sas","java","javascript","statistical","regression","Rstudio"),]
+
+SoftSkill <- non_tech_skill1$skill1
+SFrequency <- non_tech_skill1$frequency1
+NTSkills<- tech_skills1$skill1
+NTFrequency <- tech_skills1$frequency1
+merger1 <- as.data.frame(cbind(SoftSkill,SFrequency))
+merger1
+merger2 <- as.data.frame(cbind(NTSkills,NTFrequency))
+merger2
+```
+
+# British Airways
+
+#### (Similar analysis was performed with "British Airways")
+
+
+```{r,echo = TRUE}
+base_url <- "http://careers.united.com/"
+dataunited <- readLines("http://careers.united.com/ListJobs/ByKeyword/analyst/")
+dataunited <- grep ('<a href=',dataunited,value = TRUE)
+dataunited <- grep ('<a href=\"/ShowJob/Id',dataunited,value = TRUE)
+dataunited <- gsub(" <a href=",'',dataunited)
+dataunited <- gsub('*</a>','',dataunited)
+dataunited <- str_trim(dataunited,"left")
+dataunited <-  unlist(strsplit(dataunited,split = '/',fixed = TRUE))
+dataunited1 <- paste(dataunited[2],dataunited[3],dataunited[4],dataunited[5],sep = '/')
+dataunited1 <- paste(base_url,dataunited1,'/',sep = '')
+dataunited1
+dataunited2 <- paste(dataunited[8],dataunited[9],dataunited[10],dataunited[11],sep = '/')
+dataunited2 <- paste(base_url,dataunited2,'/',sep = '')
+dataunited2
+dataunited3 <- paste(dataunited[14],dataunited[15],dataunited[16],dataunited[17],sep = '/')
+dataunited3 <- paste(base_url,dataunited3,'/',sep = '')
+dataunited3
+dataunited4 <- paste(dataunited[20],dataunited[21],dataunited[22],dataunited[23],sep = '/')
+dataunited4 <- paste(base_url,dataunited4,'/',sep = '')
+dataunited4
+dataunited5 <- paste(dataunited[26],dataunited[27],dataunited[28],dataunited[29],sep = '/')
+dataunited5 <- paste(base_url,dataunited5,'/',sep = '')
+dataunited5
+dataunited6 <- paste(dataunited[32],dataunited[33],dataunited[34],dataunited[35],sep = '/')
+dataunited6 <- paste(base_url,dataunited6,'/',sep = '')
+dataunited6
+dataunited7 <- paste(dataunited[38],dataunited[39],dataunited[40],dataunited[41],sep = '/')
+dataunited7 <- paste(base_url,dataunited7,'/',sep = '')
+dataunited7
+dataunited8 <- paste(dataunited[44],dataunited[45],dataunited[46],dataunited[47],sep = '/')
+dataunited8 <- paste(base_url,dataunited8,'/',sep = '')
+dataunited8
+dataunited9 <- paste(dataunited[50],dataunited[51],dataunited[52],dataunited[53],sep = '/')
+dataunited9 <- paste(base_url,dataunited9,'/',sep = '')
+dataunited9
+dataunited10 <- paste(dataunited[56],dataunited[57],dataunited[58],dataunited[59],sep = '/')
+dataunited10<- paste(base_url,dataunited10,'/',sep = '')
+dataunited10
+dataunited11 <- paste(dataunited[62],dataunited[63],dataunited[64],dataunited[65],sep = '/')
+dataunited11 <- paste(base_url,dataunited11,'/',sep = '')
+dataunited11
+dataunited12 <- paste(dataunited[68],dataunited[69],dataunited[70],dataunited[71],sep = '/')
+dataunited12<- paste(base_url,dataunited12,'/',sep = '')
+dataunited12
+dataunited13<- paste(dataunited[74],dataunited[75],dataunited[76],dataunited[77],sep = '/')
+dataunited13 <- paste(base_url,dataunited13,'/',sep = '')
+dataunited13
+dataunited14 <- paste(dataunited[80],dataunited[81],dataunited[82],dataunited[83],sep = '/')
+dataunited14<- paste(base_url,dataunited14,'/',sep = '')
+dataunited14
+dataunited15<- paste(dataunited[86],dataunited[87],dataunited[88],dataunited[89],sep = '/')
+dataunited15 <- paste(base_url,dataunited15,'/',sep = '')
+dataunited15
+dataunited16<- paste(dataunited[92],dataunited[93],dataunited[94],dataunited[95],sep = '/')
+dataunited16<- paste(base_url,dataunited16,'/',sep = '')
+dataunited16
+dataunited17<- paste(dataunited[98],dataunited[99],dataunited[100],dataunited[101],sep = '/')
+dataunited17<- paste(base_url,dataunited17,'/',sep = '')
+dataunited17
+dataunited18<- paste(dataunited[104],dataunited[105],dataunited[106],dataunited[107],sep = '/')
+dataunited18<- paste(base_url,dataunited18,'/',sep = '')
+dataunited18
+dataunited19<- paste(dataunited[110],dataunited[111],dataunited[112],dataunited[113],sep = '/')
+dataunited19<- paste(base_url,dataunited19,'/',sep = '')
+dataunited19
+dataunited20<- paste(dataunited[116],dataunited[117],dataunited[118],dataunited[119],sep = '/')
+dataunited20<- paste(base_url,dataunited20,'/',sep = '')
+dataunited20
+dataunited21 <- paste(dataunited[123],dataunited[124],dataunited[125],dataunited[126],sep = '/')
+dataunited21 <- paste(base_url,dataunited21,'/',sep = '')
+dataunited21
+dataunited22<- paste(dataunited[129],dataunited[130],dataunited[131],dataunited[132],sep = '/')
+dataunited22 <- paste(base_url,dataunited22,'/',sep = '')
+dataunited22
+dataunited23<- paste(dataunited[135],dataunited[136],dataunited[137],dataunited[138],sep = '/')
+dataunited23<- paste(base_url,dataunited23,'/',sep = '')
+dataunited23
+megasetunited <- rbind(dataunited1,dataunited2,dataunited3,dataunited4,dataunited5,dataunited6,dataunited7,dataunited8,dataunited9,dataunited10,dataunited11,dataunited12,dataunited13,dataunited14,dataunited15,dataunited16,dataunited17,dataunited18,dataunited19,dataunited20,dataunited21,dataunited22,dataunited23)
+
+```
+
+```{r,echo = TRUE,message= FALSE,warning= FALSE}
+x1<-as.character()
+
+for(i in 1:length(megasetunited))
+{
+  webpage<-getURL(megasetunited[i])
+  webpage <- readLines(tc <- textConnection(webpage)); close(tc)
+  pagetree <- htmlTreeParse(webpage, error=function(...){}, useInternalNodes = TRUE)
+ t1<-unlist(xpathSApply(pagetree,"/html/body/div/descendant::*[contains (text(),'skills')]",xmlValue))
+ t2<-unlist(xpathSApply(pagetree,"/html/body/div/descendant::*[contains (text(),'Preferred')]",xmlValue))
+ t3<-unlist(xpathSApply(pagetree,"/html/body/div/descendant::*[contains (text(),'Required')]",xmlValue))
+ t4 <- unlist(xpathSApply(pagetree,"/html/body/div/descendant::*[contains (text(),'Job overview')]",xmlValue))
+ t5 <- unlist(xpathSApply(pagetree,"/html/body/div/descendant::*[contains (text(),'proficiency')]",xmlValue))
+ if (length(paste(t1,t2,t3,t4,t5))>0 )
+   { x1[i]<-paste(t1,t2,t3,t4,t5)  }
+ else 
+ x1[i]<-"0"
+ }
+write.csv(x1,file = "united.csv")
+file2<-read.csv("united.csv",header = FALSE,stringsAsFactors = FALSE)
+file2$V1<-paste(file2$V1,file2$V2,sep = "")
+review_text2 <- paste(file2$V1, collapse=" ")
+review_source2 <- VectorSource(review_text2)
+c2 <- Corpus(review_source2)
+c2 <- tm_map(c2, content_transformer(tolower))
+c2 <- tm_map(c2, removePunctuation)
+c2 <- tm_map(c2, stripWhitespace)
+c2 <- tm_map(c2, removeWords, stopwords("english"))
+dtm2 <- DocumentTermMatrix(c2)
+dtm22 <- as.matrix(dtm2)
+frequency2 <- colSums(dtm22)
+frequency2 <- sort(frequency2, decreasing=TRUE)
+head(frequency2,200)
+```
+
+```{r,echo = TRUE}
+skill_data2<-as.data.frame(frequency2)
+skill_data2$skill2<-rownames(skill_data2)
+
+non_tech_skill2<-skill_data2[skill_data2$skill2 %in% c("Self","interpersonal","innovation","creative","curiosity","leadership","team","management","strategy","communication","planning","driven","willing","commitment","attention","proficiency","knowledge","teamwork","focus","selfmotivated"),]
+
+tech_skills2 <- skill_data2[skill_data2$skill2 %in% c("technology","python","microsoft","powerpoint","tableau","simulation","javascrpts","sas","simulation","javascrpts","sql","agile","objectoriented"),]
+```
+
+### Meging and ploting data from both airlines together.
+
+```{r,echo = TRUE}
+SoftSkill <- non_tech_skill2$skill2
+SFrequency <- non_tech_skill2$frequency2
+NTSkills<- tech_skills2$skill2
+NTFrequency <- tech_skills2$frequency2
+merger3 <- as.data.frame(cbind(SoftSkill,SFrequency))
+merger3
+merger4 <- as.data.frame(cbind(NTSkills,NTFrequency))
+merger4
+```
+
+```{r,echo = TRUE}
+MegaMerger1 <- rbind(merger1,merger3)
+MegaMerger1$SFrequency <- as.integer(MegaMerger1$SFrequency)
+MegaMerger1 <- ddply(MegaMerger1,.(SoftSkill),summarize,sum=sum(SFrequency))
+MegaMerger1 <-arrange(MegaMerger1,desc(MegaMerger1$sum),SoftSkill)
+MegaMerger1$SoftSkill <- as.character(MegaMerger1$SoftSkill)
+MegaMerger1
+```
+
+```{r,echo = TRUE}
+MegaMerger1$SoftSkill <- factor(MegaMerger1$SoftSkill,levels = MegaMerger1$SoftSkill[order(MegaMerger1$sum)])
+ggplot(MegaMerger1,aes(x = SoftSkill , y = sum)) + theme_bw(base_size = 16) +theme(axis.text.x=element_text(angle=90,hjust=1)) + geom_bar(stat="identity",fill = "brown")
+```
+
+```{r,echo = TRUE}
+MegaMerger2 <- rbind(merger2,merger4)
+MegaMerger2$NTFrequency <- as.integer(MegaMerger2$NTFrequency)
+MegaMerger2 <- ddply(MegaMerger2,.(NTSkills),summarize,sum=sum(NTFrequency))
+arrange(MegaMerger2,desc(MegaMerger2$sum),NTSkills)
+```
+
+```{r,echo = TRUE}
+MegaMerger2$NTSkills <- factor(MegaMerger2$NTSkills,levels = MegaMerger2$NTSkills[order(MegaMerger2$sum)])
+ggplot(MegaMerger2,aes(x = NTSkills , y = sum)) + theme_bw(base_size = 16) +
+  theme(axis.text.x=element_text(angle=90,hjust=1)) + geom_bar(stat="identity",fill = "brown")
+```
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
