@@ -1,0 +1,62 @@
+---
+title: "Assignment/week9/607"
+author: "Jagruti"
+date: "10/26/2017"
+output: html_document
+---
+
+The New York Times web site provides a rich set of APIs, as described here: http://developer.nytimes.com/docs You’ll need to start by signing up for an API key.
+Your task is to choose one of the New York Times APIs, construct an interface in R to read in the JSON data, and transform it to an R dataframe.
+
+```{r,echo = TRUE,suppressPackageStartupMessages()}
+library(httr)
+library(jsonlite)
+library(RCurl)
+```
+
+### I chose the geographic API.
+
+
+### 1) Query I : With Country code "US"
+
+```{r,echo = TRUE}
+APIkey <- "&api-key=23b48cef8cb5434b8efec48a494a9a62"
+#url <- "http://api.nytimes.com/svc/semantic/v2/geocodes/query.json?(query parameters)&api-key=your-API-key" (general form of query)
+base_url <-getURL("http://api.nytimes.com/svc/semantic/v2/geocodes/query.json?country_code=US&api-key=23b48cef8cb5434b8efec48a494a9a62")
+req <- fromJSON(base_url)
+req <- data.frame(req)
+head(req)
+```
+
+### Query II : With admin_code = NY 
+
+```{r,echo = TRUE}
+APIkey <- "23b48cef8cb5434b8efec48a494a9a62"
+base_url1 <-getURL("http://api.nytimes.com/svc/semantic/v2/geocodes/query.json?admin_code1=NY&api-key=23b48cef8cb5434b8efec48a494a9a62")
+req1 <- fromJSON(base_url1)
+req1 <- data.frame(req1)
+head(req1)
+```
+
+### Query III : With country_code = "US" and Population = 50000.
+
+```{r,echo = TRUE}
+APIkey <- "23b48cef8cb5434b8efec48a494a9a62"
+base_url2 <-getURL("http://api.nytimes.com/svc/semantic/v2/geocodes/query.json?feature_class=P&country_code=US&population=50000_&api-key=23b48cef8cb5434b8efec48a494a9a62")
+req2 <- fromJSON(base_url2)
+req2 <- data.frame(req2)
+head(req2)
+```
+
+
+
+
+
+
+
+
+
+
+
+
+
