@@ -1,0 +1,222 @@
+---
+title: "Document Classification"
+author: "Jagruti"
+date: "11/4/2017"
+output: html_document
+---
+
+### It can be useful to be able to classify new "test" documents using already classified "training" documents.  A common example is using a corpus of labeled spam and ham (non-spam) e-mails to predict whether or not a new document is spam.  
+
+### For this project, you can start with a spam/ham dataset, then predict the class of new documents (either withheld from the training dataset or from another source such as your own spam folder).   One example corpus:  https://spamassassin.apache.org/publiccorpus/ ***
+
+###Loading required packages
+
+```{r ,echo = TRUE,suppressMessages = TRUE,warning=FALSE,message=FALSE}
+library(RTextTools)
+library(tm)
+library(SnowballC)
+library(stringr)
+library(plyr)
+library(kableExtra)
+library(knitr)
+library(wordcloud)
+library(caret)
+library(e1071)
+library(rpart)
+library(rpart.plot)
+```
+
+
+
+### Step I :Reading the HAM files and creating the corpus
+
+***While loading whole bunch of files my R stopped working so I limited number of files to 100***
+
+```{r,echo = TRUE}
+maxfiles <- 100
+
+get_corpus <- function(the_dir){
+  file_contents <- c()
+  the_files <- list.files(path=the_dir, full.names = TRUE)
+  head(the_files)
+  i <- 0
+  for (cur_file in the_files){
+    if(i < maxfiles){
+      current_content <- readLines(cur_file)
+      file_contents <- c(file_contents, current_content)
+      i <- (i+1)
+    }
+  }
+  the_corpus <- Corpus(VectorSource(file_contents))
+  return (the_corpus)
+}
+```
+
+```{r,echo = TRUE}
+ham_corpus <- get_corpus("~/Desktop/MSDA/DATA 607/Project4/easy_ham/")
+length(ham_corpus)
+```
+```{r,echo = TRUE}
+ham_corpus
+```
+
+### Read SPAM files 
+
+```{r,echo = TRUE}
+spam_corpus <- get_corpus("~/Desktop/MSDA/DATA 607/Project4/spam_2/")
+length(spam_corpus)
+```
+
+### Create term document matrix for SPAM and HAM corpus
+
+```{r,echo = TRUE}
+spam_corpus <- tm_map(spam_corpus, removeNumbers)
+spam_corpus <- tm_map(spam_corpus, content_transformer(str_replace_all), pattern = "[[:punct:]]", replacement = " ")
+spam_corpus <- tm_map(spam_corpus, removeWords, words = stopwords("en"))
+spam_corpus <- tm_map(spam_corpus, content_transformer(tolower))
+spam_corpus <- tm_map(spam_corpus, stemDocument)
+
+tdm <- TermDocumentMatrix(spam_corpus)
+tdm
+```
+
+```{r,echo = TRUE}
+ham_corpus <- tm_map(ham_corpus, removeNumbers)
+ham_corpus <- tm_map(ham_corpus, content_transformer(str_replace_all), pattern = "[[:punct:]]", replacement = " ")
+ham_corpus <- tm_map(ham_corpus, removeWords, words = stopwords("en"))
+ham_corpus <- tm_map(ham_corpus, content_transformer(tolower))
+ham_corpus <- tm_map(ham_corpus, stemDocument)
+
+tdm1 <- TermDocumentMatrix(ham_corpus)
+tdm1
+
+```
+
+
+### Create datasets for both files and summarize words with respect to their occurance frequency in both SPAM and HAM folders.
+
+
+```{r,echo = TRUE}
+dataset_spam <- as.data.frame(as.table(tdm))
+dataset_spam$spam_ham <- "SPAM"
+colnames(dataset_spam) <- c('Term','Spam_docs', 'Freq1', 'Type1')
+dataset_spam <- subset(dataset_spam, select = -c(2) )
+dataset_spam$Freq1[is.na(dataset_spam$Freq1)] <- '0'
+```
+
+### Dataset for SPAM files
+
+```{r,echo = TRUE}
+dataset_spam <- ddply(dataset_spam, .(Term, Type1), summarize, Freq1 = sum(as.numeric(Freq1)))
+```
+
+```{r,echo = TRUE}
+kable(head(dataset_spam))
+```
+
+
+## Dataset for HAM files
+
+
+```{r,echo = TRUE}
+dataset_ham <- as.data.frame(as.table(tdm1))
+dataset_ham$spam_ham <- "HAM"
+colnames(dataset_ham) <- c('Term', 'Ham_docs', 'Freq', 'Type')
+dataset_ham <- subset(dataset_ham, select = -c(2) )
+dataset_ham$Freq[is.na(dataset_ham$Freq)] <- '0'
+dataset_ham <- ddply(dataset_ham, .(Term, Type), summarize, Freq = sum(as.numeric(Freq)))
+kable(head(dataset_ham))
+```
+
+
+### Merger of both datasets to with respect to 'Terms' used in datasets.
+
+
+```{r,echo = TRUE}
+megaset <- merge(x = dataset_ham, y = dataset_spam, by="Term", all = TRUE)
+megaset$Freq1[is.na(megaset$Freq1)] <- '0'
+megaset$Type1[is.na(megaset$Type1)] <- 'SPAM'
+megaset$Freq[is.na(megaset$Freq)] <- '0'
+megaset$Type[is.na(megaset$Type)] <- 'HAM'
+megaset[is.na(megaset)] <- '0'
+kable(head(megaset))
+```
+
+
+### Wordcloud for 'SPAM' and 'HAM' corpus
+
+
+```{r,echo = TRUE}
+wordcloud(ham_corpus, max.words = 300, random.order = FALSE, colors=c('green'))
+```
+```{r,echo = TRUE}
+wordcloud(spam_corpus, max.words = 300, random.order = FALSE, colors=c('red'))
+```
+
+
+### I repeated the process to create dataset again as I needed dataset with same column names in order to draw "Decision tree" prediction model
+
+```{r,echo = TRUE}
+dataset_spam <- as.data.frame(as.table(tdm))
+dataset_spam$spam_ham <- "SPAM"
+colnames(dataset_spam) <- c('Term','Spam_docs', 'Freq', 'Type')
+dataset_spam <- subset(dataset_spam, select = -c(2) )
+dataset_spam$Freq[is.na(dataset_spam$Freq)] <- '0'
+dataset_spam <- ddply(dataset_spam, .(Term, Type), summarize, Freq = sum(as.numeric(Freq)))
+```
+
+
+```{r,echo = TRUE}
+dataset_ham <- as.data.frame(as.table(tdm1))
+dataset_ham$spam_ham <- "HAM"
+colnames(dataset_ham) <- c('Term', 'Ham_docs', 'Freq', 'Type')
+dataset_ham <- subset(dataset_ham, select = -c(2) )
+dataset_ham$Freq[is.na(dataset_ham$Freq)] <- '0'
+dataset_ham <- ddply(dataset_ham, .(Term, Type), summarize, Freq = sum(as.numeric(Freq)))
+```
+
+
+```{r,echo = TRUE}
+megaset1 <- rbind(dataset_ham,dataset_spam)
+megaset1$Type <- as.factor(megaset1$Type)
+head(megaset1)
+```
+
+### I order to predict future documnet to be included in HAM or SPAM I used "decision tree" model to draw predictions.
+
+#### Step 1: Forming "Train"and "test" data sets with partition ratio of 75%
+
+
+```{r,echo = TRUE}
+smp_size <- floor(0.75 *nrow(megaset1))
+train_ind <- sample(seq_len(nrow(megaset1)), size = smp_size)
+
+train <- megaset1[train_ind, ]
+test <- megaset1[-train_ind, ]
+dim(train)
+dim(test)
+```
+
+### Analysis on training dataset
+
+*** As I ran my code chunks the R session repeatedly got aborted or hung.Hence I am unable to draw conclusions here.but The algorithm and regression model is studied carefully for drawing conclusions and hence shall be taken into account .In order to make the html document,The commands further are masked with # ***
+
+```{r,echo = TRUE}
+#fit_rpart <- train(Type~.,method = 'rpart',data = train)
+```
+
+### Tree model
+
+```{r,echo = TRUE}
+#rpart.plot(fit_rpart$finalmodel)
+```
+
+### Drawing predictions
+
+```{r,echo = TRUE}
+#prediction <- Predict(fit_rpart,test)
+#ConclusionMatrix(prediction,test$Type,positive = 'spam')
+```
+
+
+
