@@ -1,0 +1,76 @@
+---
+title: "Recommender systems"
+author: "Jagruti"
+date: "11/8/2017"
+output: html_document
+---
+
+#### How to Perform a Scenario Analysis (review)?
+
+Scenario Design is an easy-to-use “three question framework” that helps you in making sure that the information in your analysis work takes UX (user experience) into account:
+
+#### 1) Who are the target users?
+#### 2) What are the key goals?
+#### 3) How can you help them accomplish those goals?
+
+
+
+```{r,echo = TRUE}
+library(png)
+library(grid)
+img <- readPNG("ScenarioDesign.png")
+grid.raster(img)
+```
+
+Instagram is a mobile, desktop, and Internet-based photo-sharing application and service that allows users to share pictures and videos either publicly or privately.Instagram gives you vast list of suggestions with photos and videos from users with open accounts whom you can follow and appreciate.In April 2017, Instagram Direct had 375 million monthly users.
+
+```{r,echo = TRUE}
+img1 <- readPNG("zzee.png")
+grid.raster(img1)
+```
+
+#### 1) Who are the target users?
+
+##### Instagram users are in all agegroup - with artists ,photographers,celebs,politians to common users.Many new business as well as established ones are using this platform to display their products and stories.
+
+#### 2) What are the key goals?
+ 
+##### The main goal of the social platform is to get users in and out of moments quickly by making posting photos and videos quick and easy.
+
+#### 3) How can you help them accomplish those goals?
+
+##### Instagram is huge and continues to grow for consumers and marketers alike. Marketers are seeing huge growth in user engagement on the platform.I feel the recommendation systems specially with videos needs to improve as It keeps showing videos from same account till the user refreshes the whole page .The recommendations are based on similar platforms you interact with but it needs to be more organised.The same feed is offered again and again.The feed needs more diversified on the basis of what instagram user follows.
+
+##### For example :If a person follows  "Travel destinations" page,he should get more recommendation for people with same interests i.e users who follow same page.
+
+
+### Reverse Engineering:
+
+#### My reverse Engineering for the app is based on changes in marketing strategies for Instagram:
+
+```{r,echo = TRUE}
+img2 <- readPNG("oreo.png")
+grid.raster(img2)
+```
+
+#### 1) Sponsored ads on user's own instagram page are much irrelevent to to user's interest.The instgram should give a survey to fill while installing the app so that it can customize the recommendations accordingly.
+
+#### 2) Videos do not stop once they are played but loop continulously and (In my personal opinion) user is unable to get the end or start sometimes.
+
+#### 3) As instagram is connected with Facebook login,the recommendations invites are usually all the facebook friends,even those who are not using Instagram.This recommendation needs to be bit more sophisticated as for those users who use only Instagram and not facebook are least reffered.
+
+#### 4) Instagram accounts holders can maitain their privacy with the options to make account private and public.The feed in general are filled up with public accounts,If instagram alogorithm can work on giving that space for sponsor ad,the home page can be freed form such ads.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
