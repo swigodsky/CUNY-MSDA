@@ -1,0 +1,104 @@
+---
+title: "Neo4j"
+author: "Jagruti"
+date: "11/19/2017"
+output:
+  html_document: default
+  pdf_document: default
+---
+
+For this assignment, you should take information from a relational database and migrate it to a NoSQL database of your own choosing.
+
+For the NoSQL database, you may use MongoDB (which we introduced in week 7), Neo4j, or another NoSQL database of your choosing.
+
+Your migration process needs to be reproducible.R code is encouraged, but not required.  You should also briefly describe the advantages and disadvantages of storing the data in a relational database vs. your NoSQL database.
+
+For This project,I worked with datasets from week2 which could be found here:
+1) https://raw.githubusercontent.com/solaojp/CUNY-MSDA/master/population.csv
+2) https://raw.githubusercontent.com/solaojp/CUNY-MSDA/master/tb_cases.csv
+
+I made very simple graphs to get better understanding of 'Neo4j' with basic queries.
+
+First relational dataset which was migrated in Neo4j(NoSQL database).(Basically building nodes to connect through their common relations ).Node labels are "population and cases".
+
+```{r,echo = TRUE}
+library(png)
+library(grid)
+img <- readPNG("x.png")
+grid.raster(img)
+```
+
+Query for second dataset to migrate in NoSQL database.
+
+```{r,echo = TRUE}
+library(png)
+library(grid)
+img <- readPNG("y.png")
+grid.raster(img)
+```
+
+To relate two nodes,the query is shown below.
+
+```{r,echo = TRUE}
+library(png)
+library(grid)
+img <- readPNG("w.png")
+grid.raster(img)
+```
+
+The final graph shows the relation.
+
+```{r,echo = TRUE}
+library(png)
+library(grid)
+img <- readPNG("z.png")
+grid.raster(img)
+```
+
+
+#### Describe the advantages and disadvantages of storing the data in a relational database vs. your NoSQL database
+
+#### Advantages:
+
+1) Cypher, Neo4j’s declarative graph query language, is built on the basic concepts and clauses of SQL but has a lot of additional graph-specific functionality to make it simple to work with your rich graph model without being too verbose.
+
+2) In Cypher the syntax stays clean and focused on domain concepts as the structural connections to find or create are expressed visually.
+
+3) Loading CSV file is much more easy with Neo4j as compared to relational database. Broadly speaking,the import of data is easy with much flexibilty.
+
+Some insights are given on Neo4j's website blog:
+
+a) Modeling data with a high number of data relationships.
+
+b) Flexibly expanding the model to add new data or data relationships.
+
+c) Querying data relationships in real-time
+
+
+#### Disadvantage:
+
+In my persanal opinion,the learning curve for Neo4j is steep as compared to relational database platforms such as SQL server.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
