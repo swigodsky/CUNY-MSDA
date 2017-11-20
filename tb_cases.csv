@@ -1,0 +1,1001 @@
+country,year,sex,cases
+Afghanistan,1995,female,NULL
+Afghanistan,1995,male,NULL
+Afghanistan,1996,female,NULL
+Afghanistan,1996,male,NULL
+Afghanistan,1997,female,102
+Afghanistan,1997,male,26
+Afghanistan,1998,female,1207
+Afghanistan,1998,male,571
+Afghanistan,1999,female,517
+Afghanistan,1999,male,228
+Afghanistan,2000,female,1751
+Afghanistan,2000,male,915
+Afghanistan,2001,female,3062
+Afghanistan,2001,male,1577
+Afghanistan,2002,female,4418
+Afghanistan,2002,male,2091
+Afghanistan,2003,female,4423
+Afghanistan,2003,male,2105
+Afghanistan,2004,female,5587
+Afghanistan,2004,male,2658
+Afghanistan,2005,female,6818
+Afghanistan,2005,male,3131
+Afghanistan,2006,female,8520
+Afghanistan,2006,male,3949
+Afghanistan,2007,female,9031
+Afghanistan,2007,male,4182
+Afghanistan,2008,female,8915
+Afghanistan,2008,male,4221
+Afghanistan,2009,female,8536
+Afghanistan,2009,male,3967
+Afghanistan,2010,female,8701
+Afghanistan,2010,male,4246
+Afghanistan,2011,female,9956
+Afghanistan,2011,male,5586
+Afghanistan,2012,female,10061
+Afghanistan,2012,male,5713
+Afghanistan,2013,female,NULL
+Afghanistan,2013,male,NULL
+Algeria,1995,female,NULL
+Algeria,1995,male,NULL
+Algeria,1996,female,NULL
+Algeria,1996,male,NULL
+Algeria,1997,female,3135
+Algeria,1997,male,5767
+Algeria,1998,female,NULL
+Algeria,1998,male,NULL
+Algeria,1999,female,2671
+Algeria,1999,male,4417
+Algeria,2000,female,3914
+Algeria,2000,male,4136
+Algeria,2001,female,3171
+Algeria,2001,male,4782
+Algeria,2002,female,3674
+Algeria,2002,male,4572
+Algeria,2003,female,2958
+Algeria,2003,male,4683
+Algeria,2004,female,3060
+Algeria,2004,male,4919
+Algeria,2005,female,3319
+Algeria,2005,male,5335
+Algeria,2006,female,2897
+Algeria,2006,male,4499
+Algeria,2007,female,3197
+Algeria,2007,male,5242
+Algeria,2008,female,3354
+Algeria,2008,male,5292
+Algeria,2009,female,3185
+Algeria,2009,male,5217
+Algeria,2010,female,3248
+Algeria,2010,male,5051
+Algeria,2011,female,3032
+Algeria,2011,male,4758
+Algeria,2012,female,2888
+Algeria,2012,male,4622
+Algeria,2013,female,2819
+Algeria,2013,male,4305
+Angola,1995,female,2181
+Angola,1995,male,2411
+Angola,1996,female,3757
+Angola,1996,male,4259
+Angola,1997,female,4020
+Angola,1997,male,4181
+Angola,1998,female,3554
+Angola,1998,male,3768
+Angola,1999,female,4441
+Angola,1999,male,4801
+Angola,2000,female,4061
+Angola,2000,male,4088
+Angola,2001,female,3493
+Angola,2001,male,3312
+Angola,2002,female,8868
+Angola,2002,male,9120
+Angola,2003,female,9738
+Angola,2003,male,9233
+Angola,2004,female,10360
+Angola,2004,male,9973
+Angola,2005,female,10245
+Angola,2005,male,10165
+Angola,2006,female,10542
+Angola,2006,male,10957
+Angola,2007,female,10141
+Angola,2007,male,11281
+Angola,2008,female,10681
+Angola,2008,male,11881
+Angola,2009,female,10221
+Angola,2009,male,12267
+Angola,2010,female,9329
+Angola,2010,male,11817
+Angola,2011,female,11723
+Angola,2011,male,14711
+Angola,2012,female,9191
+Angola,2012,male,11933
+Angola,2013,female,9207
+Angola,2013,male,12454
+Argentina,1995,female,NULL
+Argentina,1995,male,NULL
+Argentina,1996,female,3398
+Argentina,1996,male,2389
+Argentina,1997,female,2219
+Argentina,1997,male,3098
+Argentina,1998,female,2133
+Argentina,1998,male,2929
+Argentina,1999,female,1980
+Argentina,1999,male,2789
+Argentina,2000,female,2031
+Argentina,2000,male,2488
+Argentina,2001,female,2329
+Argentina,2001,male,3177
+Argentina,2002,female,2315
+Argentina,2002,male,3068
+Argentina,2003,female,2086
+Argentina,2003,male,2873
+Argentina,2004,female,2008
+Argentina,2004,male,2658
+Argentina,2005,female,1991
+Argentina,2005,male,2645
+Argentina,2006,female,3358
+Argentina,2006,male,4550
+Argentina,2007,female,4001
+Argentina,2007,male,5375
+Argentina,2008,female,3766
+Argentina,2008,male,5193
+Argentina,2009,female,2979
+Argentina,2009,male,4142
+Argentina,2010,female,2857
+Argentina,2010,male,3970
+Argentina,2011,female,3885
+Argentina,2011,male,5334
+Argentina,2012,female,4690
+Argentina,2012,male,3560
+Argentina,2013,female,3779
+Argentina,2013,male,5113
+Azerbaijan,1995,female,23
+Azerbaijan,1995,male,67
+Azerbaijan,1996,female,304
+Azerbaijan,1996,male,754
+Azerbaijan,1997,female,313
+Azerbaijan,1997,male,662
+Azerbaijan,1998,female,31
+Azerbaijan,1998,male,130
+Azerbaijan,1999,female,171
+Azerbaijan,1999,male,592
+Azerbaijan,2000,female,15
+Azerbaijan,2000,male,138
+Azerbaijan,2001,female,NULL
+Azerbaijan,2001,male,NULL
+Azerbaijan,2002,female,295
+Azerbaijan,2002,male,1366
+Azerbaijan,2003,female,274
+Azerbaijan,2003,male,887
+Azerbaijan,2004,female,341
+Azerbaijan,2004,male,1131
+Azerbaijan,2005,female,379
+Azerbaijan,2005,male,1182
+Azerbaijan,2006,female,841
+Azerbaijan,2006,male,3588
+Azerbaijan,2007,female,NULL
+Azerbaijan,2007,male,NULL
+Azerbaijan,2008,female,NULL
+Azerbaijan,2008,male,NULL
+Azerbaijan,2009,female,424
+Azerbaijan,2009,male,986
+Azerbaijan,2010,female,1260
+Azerbaijan,2010,male,3532
+Azerbaijan,2011,female,448
+Azerbaijan,2011,male,682
+Azerbaijan,2012,female,1323
+Azerbaijan,2012,male,3293
+Azerbaijan,2013,female,1258
+Azerbaijan,2013,male,3270
+Bangladesh,1995,female,1685
+Bangladesh,1995,male,4338
+Bangladesh,1996,female,2080
+Bangladesh,1996,male,5471
+Bangladesh,1997,female,8385
+Bangladesh,1997,male,21909
+Bangladesh,1998,female,10761
+Bangladesh,1998,male,26862
+Bangladesh,1999,female,10974
+Bangladesh,1999,male,26700
+Bangladesh,2000,female,11472
+Bangladesh,2000,male,26511
+Bangladesh,2001,female,12244
+Bangladesh,2001,male,28243
+Bangladesh,2002,female,14350
+Bangladesh,2002,male,32421
+Bangladesh,2003,female,16209
+Bangladesh,2003,male,37409
+Bangladesh,2004,female,18967
+Bangladesh,2004,male,43533
+Bangladesh,2005,female,27321
+Bangladesh,2005,male,57527
+Bangladesh,2006,female,49182
+Bangladesh,2006,male,91766
+Bangladesh,2007,female,34328
+Bangladesh,2007,male,69968
+Bangladesh,2008,female,69045
+Bangladesh,2008,male,118426
+Bangladesh,2009,female,NULL
+Bangladesh,2009,male,NULL
+Bangladesh,2010,female,55052
+Bangladesh,2010,male,95804
+Bangladesh,2011,female,55043
+Bangladesh,2011,male,93155
+Bangladesh,2012,female,61866
+Bangladesh,2012,male,99924
+Bangladesh,2013,female,71374
+Bangladesh,2013,male,110263
+Belarus,1995,female,NULL
+Belarus,1995,male,NULL
+Belarus,1996,female,NULL
+Belarus,1996,male,NULL
+Belarus,1997,female,NULL
+Belarus,1997,male,NULL
+Belarus,1998,female,NULL
+Belarus,1998,male,NULL
+Belarus,1999,female,NULL
+Belarus,1999,male,NULL
+Belarus,2000,female,NULL
+Belarus,2000,male,NULL
+Belarus,2001,female,NULL
+Belarus,2001,male,NULL
+Belarus,2002,female,137
+Belarus,2002,male,701
+Belarus,2003,female,192
+Belarus,2003,male,826
+Belarus,2004,female,221
+Belarus,2004,male,NULL
+Belarus,2005,female,NULL
+Belarus,2005,male,NULL
+Belarus,2006,female,1483
+Belarus,2006,male,3659
+Belarus,2007,female,1466
+Belarus,2007,male,3406
+Belarus,2008,female,1351
+Belarus,2008,male,3283
+Belarus,2009,female,499
+Belarus,2009,male,1132
+Belarus,2010,female,1305
+Belarus,2010,male,3040
+Belarus,2011,female,1166
+Belarus,2011,male,2877
+Belarus,2012,female,1152
+Belarus,2012,male,2690
+Belarus,2013,female,1234
+Belarus,2013,male,3236
+Benin,1995,female,612
+Benin,1995,male,1227
+Benin,1996,female,666
+Benin,1996,male,1202
+Benin,1997,female,656
+Benin,1997,male,1280
+Benin,1998,female,728
+Benin,1998,male,1260
+Benin,1999,female,785
+Benin,1999,male,1417
+Benin,2000,female,845
+Benin,2000,male,1441
+Benin,2001,female,840
+Benin,2001,male,1453
+Benin,2002,female,904
+Benin,2002,male,1507
+Benin,2003,female,877
+Benin,2003,male,1557
+Benin,2004,female,949
+Benin,2004,male,1633
+Benin,2005,female,929
+Benin,2005,male,1810
+Benin,2006,female,1061
+Benin,2006,male,1882
+Benin,2007,female,945
+Benin,2007,male,1825
+Benin,2008,female,1023
+Benin,2008,male,1943
+Benin,2009,female,1038
+Benin,2009,male,1922
+Benin,2010,female,1051
+Benin,2010,male,1922
+Benin,2011,female,1173
+Benin,2011,male,2158
+Benin,2012,female,1086
+Benin,2012,male,2085
+Benin,2013,female,1066
+Benin,2013,male,2063
+"Bolivia (Plurinational State of)",1995,female,NULL
+"Bolivia (Plurinational State of)",1995,male,NULL
+"Bolivia (Plurinational State of)",1996,female,2719
+"Bolivia (Plurinational State of)",1996,male,4230
+"Bolivia (Plurinational State of)",1997,female,2586
+"Bolivia (Plurinational State of)",1997,male,3872
+"Bolivia (Plurinational State of)",1998,female,2491
+"Bolivia (Plurinational State of)",1998,male,4090
+"Bolivia (Plurinational State of)",1999,female,2619
+"Bolivia (Plurinational State of)",1999,male,4054
+"Bolivia (Plurinational State of)",2000,female,2623
+"Bolivia (Plurinational State of)",2000,male,3835
+"Bolivia (Plurinational State of)",2001,female,2825
+"Bolivia (Plurinational State of)",2001,male,3847
+"Bolivia (Plurinational State of)",2002,female,2925
+"Bolivia (Plurinational State of)",2002,male,3904
+"Bolivia (Plurinational State of)",2003,female,2565
+"Bolivia (Plurinational State of)",2003,male,3779
+"Bolivia (Plurinational State of)",2004,female,2443
+"Bolivia (Plurinational State of)",2004,male,3770
+"Bolivia (Plurinational State of)",2005,female,2485
+"Bolivia (Plurinational State of)",2005,male,3793
+"Bolivia (Plurinational State of)",2006,female,2223
+"Bolivia (Plurinational State of)",2006,male,3565
+"Bolivia (Plurinational State of)",2007,female,2171
+"Bolivia (Plurinational State of)",2007,male,3229
+"Bolivia (Plurinational State of)",2008,female,2338
+"Bolivia (Plurinational State of)",2008,male,3710
+"Bolivia (Plurinational State of)",2009,female,3012
+"Bolivia (Plurinational State of)",2009,male,4667
+"Bolivia (Plurinational State of)",2010,female,3085
+"Bolivia (Plurinational State of)",2010,male,4852
+"Bolivia (Plurinational State of)",2011,female,3119
+"Bolivia (Plurinational State of)",2011,male,4991
+"Bolivia (Plurinational State of)",2012,female,3071
+"Bolivia (Plurinational State of)",2012,male,4740
+"Bolivia (Plurinational State of)",2013,female,3137
+"Bolivia (Plurinational State of)",2013,male,5190
+Botswana,1995,female,NULL
+Botswana,1995,male,NULL
+Botswana,1996,female,NULL
+Botswana,1996,male,NULL
+Botswana,1997,female,1051
+Botswana,1997,male,1635
+Botswana,1998,female,NULL
+Botswana,1998,male,NULL
+Botswana,1999,female,1136
+Botswana,1999,male,1719
+Botswana,2000,female,1294
+Botswana,2000,male,1801
+Botswana,2001,female,1348
+Botswana,2001,male,1711
+Botswana,2002,female,1518
+Botswana,2002,male,1819
+Botswana,2003,female,1369
+Botswana,2003,male,1681
+Botswana,2004,female,1439
+Botswana,2004,male,1689
+Botswana,2005,female,1310
+Botswana,2005,male,1860
+Botswana,2006,female,1372
+Botswana,2006,male,1880
+Botswana,2007,female,1284
+Botswana,2007,male,1718
+Botswana,2008,female,3524
+Botswana,2008,male,4302
+Botswana,2009,female,3546
+Botswana,2009,male,4420
+Botswana,2010,female,2941
+Botswana,2010,male,3619
+Botswana,2011,female,2671
+Botswana,2011,male,3194
+Botswana,2012,female,2633
+Botswana,2012,male,3152
+Botswana,2013,female,2923
+Botswana,2013,male,3911
+Brazil,1995,female,NULL
+Brazil,1995,male,NULL
+Brazil,1996,female,NULL
+Brazil,1996,male,NULL
+Brazil,1997,female,NULL
+Brazil,1997,male,NULL
+Brazil,1998,female,NULL
+Brazil,1998,male,NULL
+Brazil,1999,female,13161
+Brazil,1999,male,24576
+Brazil,2000,female,29650
+Brazil,2000,male,50838
+Brazil,2001,female,13516
+Brazil,2001,male,23975
+Brazil,2002,female,13817
+Brazil,2002,male,26906
+Brazil,2003,female,13764
+Brazil,2003,male,26119
+Brazil,2004,female,14659
+Brazil,2004,male,28222
+Brazil,2005,female,14253
+Brazil,2005,male,27840
+Brazil,2006,female,26105
+Brazil,2006,male,48253
+Brazil,2007,female,24853
+Brazil,2007,male,46974
+Brazil,2008,female,24248
+Brazil,2008,male,46236
+Brazil,2009,female,24675
+Brazil,2009,male,46897
+Brazil,2010,female,24055
+Brazil,2010,male,46793
+Brazil,2011,female,23840
+Brazil,2011,male,47362
+Brazil,2012,female,23560
+Brazil,2012,male,47512
+Brazil,2013,female,25259
+Brazil,2013,male,50737
+"Burkina Faso",1995,female,222
+"Burkina Faso",1995,male,467
+"Burkina Faso",1996,female,324
+"Burkina Faso",1996,male,575
+"Burkina Faso",1997,female,324
+"Burkina Faso",1997,male,575
+"Burkina Faso",1998,female,404
+"Burkina Faso",1998,male,927
+"Burkina Faso",1999,female,430
+"Burkina Faso",1999,male,818
+"Burkina Faso",2000,female,392
+"Burkina Faso",2000,male,895
+"Burkina Faso",2001,female,465
+"Burkina Faso",2001,male,1053
+"Burkina Faso",2002,female,495
+"Burkina Faso",2002,male,1031
+"Burkina Faso",2003,female,536
+"Burkina Faso",2003,male,1167
+"Burkina Faso",2004,female,634
+"Burkina Faso",2004,male,1292
+"Burkina Faso",2005,female,765
+"Burkina Faso",2005,male,1529
+"Burkina Faso",2006,female,883
+"Burkina Faso",2006,male,1776
+"Burkina Faso",2007,female,1327
+"Burkina Faso",2007,male,2377
+"Burkina Faso",2008,female,886
+"Burkina Faso",2008,male,1870
+"Burkina Faso",2009,female,999
+"Burkina Faso",2009,male,2062
+"Burkina Faso",2010,female,952
+"Burkina Faso",2010,male,2089
+"Burkina Faso",2011,female,1040
+"Burkina Faso",2011,male,2410
+"Burkina Faso",2012,female,1010
+"Burkina Faso",2012,male,2573
+"Burkina Faso",2013,female,941
+"Burkina Faso",2013,male,2675
+Burundi,1995,female,390
+Burundi,1995,male,719
+Burundi,1996,female,541
+Burundi,1996,male,964
+Burundi,1997,female,811
+Burundi,1997,male,1415
+Burundi,1998,female,1064
+Burundi,1998,male,1857
+Burundi,1999,female,1013
+Burundi,1999,male,1911
+Burundi,2000,female,NULL
+Burundi,2000,male,NULL
+Burundi,2001,female,1282
+Burundi,2001,male,1758
+Burundi,2002,female,1056
+Burundi,2002,male,1735
+Burundi,2003,female,1176
+Burundi,2003,male,1841
+Burundi,2004,female,1151
+Burundi,2004,male,1936
+Burundi,2005,female,1222
+Burundi,2005,male,2040
+Burundi,2006,female,1156
+Burundi,2006,male,1963
+Burundi,2007,female,1328
+Burundi,2007,male,2267
+Burundi,2008,female,1226
+Burundi,2008,male,2384
+Burundi,2009,female,1362
+Burundi,2009,male,2612
+Burundi,2010,female,2832
+Burundi,2010,male,4547
+Burundi,2011,female,2357
+Burundi,2011,male,4137
+Burundi,2012,female,2408
+Burundi,2012,male,4300
+Burundi,2013,female,2560
+Burundi,2013,male,4689
+Cambodia,1995,female,6263
+Cambodia,1995,male,6222
+Cambodia,1996,female,5950
+Cambodia,1996,male,6115
+Cambodia,1997,female,NULL
+Cambodia,1997,male,NULL
+Cambodia,1998,female,6822
+Cambodia,1998,male,7027
+Cambodia,1999,female,7743
+Cambodia,1999,male,8001
+Cambodia,2000,female,7450
+Cambodia,2000,male,7373
+Cambodia,2001,female,6983
+Cambodia,2001,male,7378
+Cambodia,2002,female,8153
+Cambodia,2002,male,9105
+Cambodia,2003,female,9320
+Cambodia,2003,male,9603
+Cambodia,2004,female,9126
+Cambodia,2004,male,9852
+Cambodia,2005,female,10291
+Cambodia,2005,male,10710
+Cambodia,2006,female,9506
+Cambodia,2006,male,9788
+Cambodia,2007,female,9265
+Cambodia,2007,male,10156
+Cambodia,2008,female,9735
+Cambodia,2008,male,10125
+Cambodia,2009,female,8466
+Cambodia,2009,male,9397
+Cambodia,2010,female,8106
+Cambodia,2010,male,9348
+Cambodia,2011,female,7275
+Cambodia,2011,male,8601
+Cambodia,2012,female,6603
+Cambodia,2012,male,8238
+Cambodia,2013,female,6374
+Cambodia,2013,male,7709
+Cameroon,1995,female,1082
+Cameroon,1995,male,1775
+Cameroon,1996,female,869
+Cameroon,1996,male,1444
+Cameroon,1997,female,1421
+Cameroon,1997,male,2127
+Cameroon,1998,female,1531
+Cameroon,1998,male,2843
+Cameroon,1999,female,2192
+Cameroon,1999,male,3640
+Cameroon,2000,female,1486
+Cameroon,2000,male,2474
+Cameroon,2001,female,1735
+Cameroon,2001,male,2961
+Cameroon,2002,female,3027
+Cameroon,2002,male,4338
+Cameroon,2003,female,4348
+Cameroon,2003,male,6344
+Cameroon,2004,female,4462
+Cameroon,2004,male,6756
+Cameroon,2005,female,5360
+Cameroon,2005,male,7641
+Cameroon,2006,female,5170
+Cameroon,2006,male,7700
+Cameroon,2007,female,5422
+Cameroon,2007,male,7798
+Cameroon,2008,female,5697
+Cameroon,2008,male,8540
+Cameroon,2009,female,5727
+Cameroon,2009,male,8760
+Cameroon,2010,female,5913
+Cameroon,2010,male,8551
+Cameroon,2011,female,5894
+Cameroon,2011,male,9033
+Cameroon,2012,female,5892
+Cameroon,2012,male,9124
+Cameroon,2013,female,NULL
+Cameroon,2013,male,NULL
+"Central African Republic",1995,female,854
+"Central African Republic",1995,male,940
+"Central African Republic",1996,female,961
+"Central African Republic",1996,male,1023
+"Central African Republic",1997,female,1088
+"Central African Republic",1997,male,1185
+"Central African Republic",1998,female,1315
+"Central African Republic",1998,male,1322
+"Central African Republic",1999,female,1322
+"Central African Republic",1999,male,1403
+"Central African Republic",2000,female,NULL
+"Central African Republic",2000,male,NULL
+"Central African Republic",2001,female,651
+"Central African Republic",2001,male,731
+"Central African Republic",2002,female,1284
+"Central African Republic",2002,male,1474
+"Central African Republic",2003,female,NULL
+"Central African Republic",2003,male,NULL
+"Central African Republic",2004,female,1299
+"Central African Republic",2004,male,1624
+"Central African Republic",2005,female,712
+"Central African Republic",2005,male,1441
+"Central African Republic",2006,female,3232
+"Central African Republic",2006,male,3185
+"Central African Republic",2007,female,NULL
+"Central African Republic",2007,male,NULL
+"Central African Republic",2008,female,2023
+"Central African Republic",2008,male,2209
+"Central African Republic",2009,female,2321
+"Central African Republic",2009,male,2811
+"Central African Republic",2010,female,2956
+"Central African Republic",2010,male,3346
+"Central African Republic",2011,female,2491
+"Central African Republic",2011,male,2816
+"Central African Republic",2012,female,1997
+"Central African Republic",2012,male,2644
+"Central African Republic",2013,female,1835
+"Central African Republic",2013,male,2361
+Chad,1995,female,NULL
+Chad,1995,male,NULL
+Chad,1996,female,NULL
+Chad,1996,male,NULL
+Chad,1997,female,NULL
+Chad,1997,male,NULL
+Chad,1998,female,NULL
+Chad,1998,male,NULL
+Chad,1999,female,834
+Chad,1999,male,2086
+Chad,2000,female,NULL
+Chad,2000,male,NULL
+Chad,2001,female,NULL
+Chad,2001,male,NULL
+Chad,2002,female,1257
+Chad,2002,male,2260
+Chad,2003,female,1639
+Chad,2003,male,1960
+Chad,2004,female,879
+Chad,2004,male,1391
+Chad,2005,female,919
+Chad,2005,male,1597
+Chad,2006,female,NULL
+Chad,2006,male,NULL
+Chad,2007,female,NULL
+Chad,2007,male,NULL
+Chad,2008,female,NULL
+Chad,2008,male,NULL
+Chad,2009,female,1307
+Chad,2009,male,2511
+Chad,2010,female,2669
+Chad,2010,male,5032
+Chad,2011,female,2924
+Chad,2011,male,5342
+Chad,2012,female,2897
+Chad,2012,male,5392
+Chad,2013,female,4097
+Chad,2013,male,7140
+Chile,1995,female,607
+Chile,1995,male,1017
+Chile,1996,female,470
+Chile,1996,male,1010
+Chile,1997,female,518
+Chile,1997,male,1005
+Chile,1998,female,NULL
+Chile,1998,male,NULL
+Chile,1999,female,528
+Chile,1999,male,969
+Chile,2000,female,437
+Chile,2000,male,853
+Chile,2001,female,435
+Chile,2001,male,920
+Chile,2002,female,463
+Chile,2002,male,949
+Chile,2003,female,417
+Chile,2003,male,859
+Chile,2004,female,401
+Chile,2004,male,896
+Chile,2005,female,382
+Chile,2005,male,794
+Chile,2006,female,848
+Chile,2006,male,1423
+Chile,2007,female,808
+Chile,2007,male,1458
+Chile,2008,female,769
+Chile,2008,male,1506
+Chile,2009,female,791
+Chile,2009,male,1419
+Chile,2010,female,794
+Chile,2010,male,1415
+Chile,2011,female,805
+Chile,2011,male,1458
+Chile,2012,female,790
+Chile,2012,male,1425
+Chile,2013,female,858
+Chile,2013,male,1546
+China,1995,female,46784
+China,1995,male,84410
+China,1996,female,59140
+China,1996,male,109130
+China,1997,female,67601
+China,1997,male,128294
+China,1998,female,72408
+China,1998,male,141996
+China,1999,female,70457
+China,1999,male,141801
+China,2000,female,70126
+China,2000,male,143640
+China,2001,female,69021
+China,2001,male,143745
+China,2002,female,62217
+China,2002,male,132755
+China,2003,female,84803
+China,2003,male,182477
+China,2004,female,120145
+China,2004,male,264741
+China,2005,female,144867
+China,2005,male,327852
+China,2006,female,141171
+China,2006,male,327120
+China,2007,female,136766
+China,2007,male,329111
+China,2008,female,132506
+China,2008,male,330090
+China,2009,female,270530
+China,2009,male,613947
+China,2010,female,268998
+China,2010,male,600094
+China,2011,female,263933
+China,2011,male,601126
+China,2012,female,265110
+China,2012,male,593751
+China,2013,female,261049
+China,2013,male,586127
+"China, Hong Kong SAR",1995,female,NULL
+"China, Hong Kong SAR",1995,male,NULL
+"China, Hong Kong SAR",1996,female,NULL
+"China, Hong Kong SAR",1996,male,NULL
+"China, Hong Kong SAR",1997,female,583
+"China, Hong Kong SAR",1997,male,1453
+"China, Hong Kong SAR",1998,female,NULL
+"China, Hong Kong SAR",1998,male,NULL
+"China, Hong Kong SAR",1999,female,555
+"China, Hong Kong SAR",1999,male,1212
+"China, Hong Kong SAR",2000,female,571
+"China, Hong Kong SAR",2000,male,1369
+"China, Hong Kong SAR",2001,female,595
+"China, Hong Kong SAR",2001,male,1262
+"China, Hong Kong SAR",2002,female,555
+"China, Hong Kong SAR",2002,male,1337
+"China, Hong Kong SAR",2003,female,604
+"China, Hong Kong SAR",2003,male,1190
+"China, Hong Kong SAR",2004,female,532
+"China, Hong Kong SAR",2004,male,1162
+"China, Hong Kong SAR",2005,female,2026
+"China, Hong Kong SAR",2005,male,3415
+"China, Hong Kong SAR",2006,female,1869
+"China, Hong Kong SAR",2006,male,3273
+"China, Hong Kong SAR",2007,female,1878
+"China, Hong Kong SAR",2007,male,3095
+"China, Hong Kong SAR",2008,female,1916
+"China, Hong Kong SAR",2008,male,3252
+"China, Hong Kong SAR",2009,female,1898
+"China, Hong Kong SAR",2009,male,2941
+"China, Hong Kong SAR",2010,female,1765
+"China, Hong Kong SAR",2010,male,2854
+"China, Hong Kong SAR",2011,female,1651
+"China, Hong Kong SAR",2011,male,2788
+"China, Hong Kong SAR",2012,female,1700
+"China, Hong Kong SAR",2012,male,2786
+"China, Hong Kong SAR",2013,female,1796
+"China, Hong Kong SAR",2013,male,2948
+Colombia,1995,female,NULL
+Colombia,1995,male,NULL
+Colombia,1996,female,NULL
+Colombia,1996,male,NULL
+Colombia,1997,female,NULL
+Colombia,1997,male,NULL
+Colombia,1998,female,NULL
+Colombia,1998,male,NULL
+Colombia,1999,female,NULL
+Colombia,1999,male,8329
+Colombia,2000,female,3257
+Colombia,2000,male,5101
+Colombia,2001,female,3169
+Colombia,2001,male,4853
+Colombia,2002,female,2585
+Colombia,2002,male,3934
+Colombia,2003,female,3135
+Colombia,2003,male,4837
+Colombia,2004,female,3107
+Colombia,2004,male,4533
+Colombia,2005,female,2826
+Colombia,2005,male,4044
+Colombia,2006,female,4371
+Colombia,2006,male,6325
+Colombia,2007,female,4321
+Colombia,2007,male,6206
+Colombia,2008,female,4382
+Colombia,2008,male,6549
+Colombia,2009,female,4399
+Colombia,2009,male,6586
+Colombia,2010,female,4271
+Colombia,2010,male,6438
+Colombia,2011,female,4294
+Colombia,2011,male,6848
+Colombia,2012,female,4385
+Colombia,2012,male,6681
+Colombia,2013,female,4477
+Colombia,2013,male,7260
+Congo,1995,female,943
+Congo,1995,male,1043
+Congo,1996,female,NULL
+Congo,1996,male,NULL
+Congo,1997,female,NULL
+Congo,1997,male,NULL
+Congo,1998,female,NULL
+Congo,1998,male,NULL
+Congo,1999,female,942
+Congo,1999,male,1090
+Congo,2000,female,NULL
+Congo,2000,male,NULL
+Congo,2001,female,2059
+Congo,2001,male,2105
+Congo,2002,female,NULL
+Congo,2002,male,NULL
+Congo,2003,female,NULL
+Congo,2003,male,NULL
+Congo,2004,female,1809
+Congo,2004,male,2310
+Congo,2005,female,NULL
+Congo,2005,male,NULL
+Congo,2006,female,1446
+Congo,2006,male,1745
+Congo,2007,female,1682
+Congo,2007,male,1870
+Congo,2008,female,1536
+Congo,2008,male,1835
+Congo,2009,female,1526
+Congo,2009,male,1907
+Congo,2010,female,1542
+Congo,2010,male,1907
+Congo,2011,female,1660
+Congo,2011,male,2056
+Congo,2012,female,1679
+Congo,2012,male,2305
+Congo,2013,female,1584
+Congo,2013,male,2319
+"C繫te d'Ivoire",1995,female,2616
+"C繫te d'Ivoire",1995,male,5638
+"C繫te d'Ivoire",1996,female,2614
+"C繫te d'Ivoire",1996,male,4773
+"C繫te d'Ivoire",1997,female,3318
+"C繫te d'Ivoire",1997,male,5723
+"C繫te d'Ivoire",1998,female,3427
+"C繫te d'Ivoire",1998,male,5964
+"C繫te d'Ivoire",1999,female,3493
+"C繫te d'Ivoire",1999,male,5459
+"C繫te d'Ivoire",2000,female,NULL
+"C繫te d'Ivoire",2000,male,NULL
+"C繫te d'Ivoire",2001,female,4011
+"C繫te d'Ivoire",2001,male,5890
+"C繫te d'Ivoire",2002,female,4443
+"C繫te d'Ivoire",2002,male,6582
+"C繫te d'Ivoire",2003,female,4658
+"C繫te d'Ivoire",2003,male,6540
+"C繫te d'Ivoire",2004,female,5015
+"C繫te d'Ivoire",2004,male,7121
+"C繫te d'Ivoire",2005,female,5179
+"C繫te d'Ivoire",2005,male,7224
+"C繫te d'Ivoire",2006,female,5292
+"C繫te d'Ivoire",2006,male,7575
+"C繫te d'Ivoire",2007,female,5858
+"C繫te d'Ivoire",2007,male,8213
+"C繫te d'Ivoire",2008,female,6231
+"C繫te d'Ivoire",2008,male,9063
+"C繫te d'Ivoire",2009,female,5766
+"C繫te d'Ivoire",2009,male,8534
+"C繫te d'Ivoire",2010,female,5591
+"C繫te d'Ivoire",2010,male,8540
+"C繫te d'Ivoire",2011,female,5568
+"C繫te d'Ivoire",2011,male,8848
+"C繫te d'Ivoire",2012,female,5636
+"C繫te d'Ivoire",2012,male,9024
+"C繫te d'Ivoire",2013,female,5750
+"C繫te d'Ivoire",2013,male,9491
+"Democratic People's Republic of Korea",1995,female,NULL
+"Democratic People's Republic of Korea",1995,male,NULL
+"Democratic People's Republic of Korea",1996,female,NULL
+"Democratic People's Republic of Korea",1996,male,NULL
+"Democratic People's Republic of Korea",1997,female,1240
+"Democratic People's Republic of Korea",1997,male,2740
+"Democratic People's Republic of Korea",1998,female,119
+"Democratic People's Republic of Korea",1998,male,183
+"Democratic People's Republic of Korea",1999,female,1051
+"Democratic People's Republic of Korea",1999,male,1622
+"Democratic People's Republic of Korea",2000,female,6447
+"Democratic People's Republic of Korea",2000,male,9993
+"Democratic People's Republic of Korea",2001,female,5308
+"Democratic People's Republic of Korea",2001,male,9120
+"Democratic People's Republic of Korea",2002,female,7469
+"Democratic People's Republic of Korea",2002,male,11107
+"Democratic People's Republic of Korea",2003,female,6680
+"Democratic People's Republic of Korea",2003,male,10712
+"Democratic People's Republic of Korea",2004,female,6688
+"Democratic People's Republic of Korea",2004,male,11791
+"Democratic People's Republic of Korea",2005,female,7420
+"Democratic People's Republic of Korea",2005,male,10396
+"Democratic People's Republic of Korea",2006,female,6797
+"Democratic People's Republic of Korea",2006,male,11638
+"Democratic People's Republic of Korea",2007,female,9212
+"Democratic People's Republic of Korea",2007,male,14363
+"Democratic People's Republic of Korea",2008,female,26648
+"Democratic People's Republic of Korea",2008,male,43736
+"Democratic People's Republic of Korea",2009,female,29070
+"Democratic People's Republic of Korea",2009,male,45019
+"Democratic People's Republic of Korea",2010,female,31143
+"Democratic People's Republic of Korea",2010,male,50097
+"Democratic People's Republic of Korea",2011,female,32026
+"Democratic People's Republic of Korea",2011,male,53538
+"Democratic People's Republic of Korea",2012,female,32680
+"Democratic People's Republic of Korea",2012,male,52504
+"Democratic People's Republic of Korea",2013,female,35094
+"Democratic People's Republic of Korea",2013,male,55497
+"Democratic Republic of the Congo",1995,female,5745
+"Democratic Republic of the Congo",1995,male,8324
+"Democratic Republic of the Congo",1996,female,5369
+"Democratic Republic of the Congo",1996,male,6218
+"Democratic Republic of the Congo",1997,female,6101
+"Democratic Republic of the Congo",1997,male,7141
+"Democratic Republic of the Congo",1998,female,14266
+"Democratic Republic of the Congo",1998,male,16307
+"Democratic Republic of the Congo",1999,female,16154
+"Democratic Republic of the Congo",1999,male,18767
+"Democratic Republic of the Congo",2000,female,16525
+"Democratic Republic of the Congo",2000,male,18963
+"Democratic Republic of the Congo",2001,female,18623
+"Democratic Republic of the Congo",2001,male,21827
+"Democratic Republic of the Congo",2002,female,20214
+"Democratic Republic of the Congo",2002,male,23266
+"Democratic Republic of the Congo",2003,female,25315
+"Democratic Republic of the Congo",2003,male,28018
+"Democratic Republic of the Congo",2004,female,29362
+"Democratic Republic of the Congo",2004,male,32830
+"Democratic Republic of the Congo",2005,female,30501
+"Democratic Republic of the Congo",2005,male,34539
+"Democratic Republic of the Congo",2006,female,29652
+"Democratic Republic of the Congo",2006,male,33492
+"Democratic Republic of the Congo",2007,female,30904
+"Democratic Republic of the Congo",2007,male,35195
+"Democratic Republic of the Congo",2008,female,32352
+"Democratic Republic of the Congo",2008,male,37125
+"Democratic Republic of the Congo",2009,female,32641
+"Democratic Republic of the Congo",2009,male,37848
+"Democratic Republic of the Congo",2010,female,33529
+"Democratic Republic of the Congo",2010,male,40124
+"Democratic Republic of the Congo",2011,female,32388
+"Democratic Republic of the Congo",2011,male,38933
+"Democratic Republic of the Congo",2012,female,31187
+"Democratic Republic of the Congo",2012,male,39937
+"Democratic Republic of the Congo",2013,female,31122
+"Democratic Republic of the Congo",2013,male,40098
+Djibouti,1995,female,NULL
+Djibouti,1995,male,NULL
+Djibouti,1996,female,621
+Djibouti,1996,male,1175
+Djibouti,1997,female,612
+Djibouti,1997,male,1293
+Djibouti,1998,female,578
+Djibouti,1998,male,1119
+Djibouti,1999,female,491
+Djibouti,1999,male,1079
+Djibouti,2000,female,420
+Djibouti,2000,male,974
+Djibouti,2001,female,433
+Djibouti,2001,male,879
+Djibouti,2002,female,395
+Djibouti,2002,male,858
+Djibouti,2003,female,398
+Djibouti,2003,male,794
+Djibouti,2004,female,349
+Djibouti,2004,male,737
+Djibouti,2005,female,373
+Djibouti,2005,male,747
+Djibouti,2006,female,387
+Djibouti,2006,male,766
+Djibouti,2007,female,1204
+Djibouti,2007,male,1622
+Djibouti,2008,female,476
+Djibouti,2008,male,899
+Djibouti,2009,female,488
+Djibouti,2009,male,889
+Djibouti,2010,female,412
+Djibouti,2010,male,769
+Djibouti,2011,female,500
+Djibouti,2011,male,836
+Djibouti,2012,female,399
+Djibouti,2012,male,771
+Djibouti,2013,female,418
+Djibouti,2013,male,732
+"Dominican Republic",1995,female,NULL
+"Dominican Republic",1995,male,NULL
+"Dominican Republic",1996,female,496
+"Dominican Republic",1996,male,804
+"Dominican Republic",1997,female,1102
+"Dominican Republic",1997,male,1580
+"Dominican Republic",1998,female,898
+"Dominican Republic",1998,male,1296
+"Dominican Republic",1999,female,1464
+"Dominican Republic",1999,male,2025
+"Dominican Republic",2000,female,1188
+"Dominican Republic",2000,male,1719
