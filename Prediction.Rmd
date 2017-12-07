@@ -1,0 +1,121 @@
+---
+title: "Prediction systems"
+author: "Jagruti"
+date: "12/2/2017"
+output: html_document
+---
+
+```{r,echo = TRUE,suppressMessages = TRUE}
+library(ggplot2)
+library(dplyr)
+library(tm)
+library(reshape2)
+library(tidyr)
+```
+
+```{r ,echo = TRUE}
+x <- read.csv("members.csv")
+x[1:2000,]
+```
+
+```{r,echo = TRUE}
+y <- read.csv ("sample_submission.csv")
+y[1:2000,]
+```
+
+
+```{r,echo = TRUE}
+z <- read.csv("song_extra_info.csv",header=FALSE, stringsAsFactors=FALSE, fileEncoding="latin1")
+z[1:2000,]
+```
+
+```{r,echo = TRUE}
+w <- read.csv("songs.csv", header=FALSE, stringsAsFactors=FALSE, fileEncoding="latin1")
+names(w) = as.character(unlist(w[1,]))
+w <- w[-1,]
+w[1:2000,]
+```
+
+```{r,echo = TRUE}
+v <- read.csv("test.csv")
+v[1:2000,]
+```
+
+```{r,echo = TRUE}
+t <- read.csv("train.csv")
+t[1:2000,]
+```
+
+# Merged train sets
+```{r,echo = TRUE}
+merger1 <- merge.data.frame(t,w,by = "song_id")
+merger_train <- merge.data.frame(merger1,x,by = "msno")
+merger_train <- na.omit(merger_train)
+summary(merger_train)
+```
+```{r,echo = TRUE}
+#merger_train$registration_init_time <- as.Date(merger_train$registration_init_time,origin = "1970-01-01")
+#merger_train$expiration_date <- as.Date(merger_train$expiration_date,origin = "1970-01-01")
+head(merger_train)
+```
+
+#Merged test sets
+```{r,echo = TRUE}
+merger3 <- merge.data.frame(v,w,by = "song_id")
+merger_test <- merge.data.frame(merger3,x,by = "msno")
+str(merger_test)
+```
+
+```{r,echo = TRUE}
+str(merger_train)
+ggplot(merger_train,aes(x= source_type))+ theme_bw(base_size = 16) +theme(axis.text.x=element_text(angle=90,hjust=1)) + geom_bar()
+```
+
+What we can build our initial prediction is that people listen most of the songs from their local-library. Which has high possibility of recurring songs.
+
+Selecting those users who listened to songs from local-library more than once.(Target = 1 and target = 0)
+
+```{r,echo = TRUE}
+#merger_train1 <- merger_train[which(merger_train$target == 1),]
+#merger_train2 <- merger_train[which(merger_train$target == 0),]
+
+table(merger_train$target)
+prop.table(table(merger_train$target))
+
+```
+## This shows 70 % songs are repeated more than once within on month.
+
+
+Okay, that’s a bit more readable. 70% of songs were repeated more than once. This means we can assume that most of songs were repeated. So are you ready to make your first prediction? We can safely assume that evey song in merge_test was also repeated.
+
+```{r,echo = TRUE}
+merger_test$target <- rep(1,2125619)
+```
+
+### gender - target model
+
+```{r,echo = TRUE}
+table(merger_train$msno)
+```
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
